@@ -1,0 +1,31 @@
+{
+  "name": "project",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 5050"
+  },
+  "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.1.2",
+    "@vueup/vue-quill": "^1.0.0-beta.9",
+    "axios": "^0.26.1",
+    "bootstrap": "^5.2.0",
+    "bootstrap-vue": "^2.22.0",
+    "express": "^4.18.1",
+    "marked": "^4.0.19",
+    "pinia": "^2.0.13",
+    "sweetalert2": "^11.4.36",
+    "vee-validate": "^4.5.11",
+    "vue": "^3.2.37",
+    "vue-router": "^4.0.14",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.1",
+    "nodemon": "^2.0.19",
+    "pending-xhr-puppeteer": "^2.3.3",
+    "sass": "^1.54.5",
+    "vite": "^2.9.1"
+  }
+}
