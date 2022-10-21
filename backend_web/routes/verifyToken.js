@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
       req.user = user;
       next();
     });
-  } 
+  }
   else {
     return res.status(401).json("You are not authenticated!");
   }
@@ -24,16 +24,59 @@ const verifyTokenAndAuthorization = (req, res, next) => {
     }
   });
 };
-
-const verifyTokenAndAdmin = (req, res, next) => {
-  verifyToken(req, res, () => {
-    if (req.user.isAdmin) {
+const CheckLogin = async(req, res, next) => {
+  try {
+    const user = await user.findById(req.user.id);
+    if(!!user) {
+      req.user = user;
+      next();
+    }else return res.status(403).json("You are not logging in!");
+  }catch(e) {
+    return res.status(403).json("Error Server Error: " + e.message)
+  }
+}
+const CheckRoleAdmin = async(req, res, next) => {
+    try {
+      const user = await user.findById(req.user.id);
+      const roleUser = await role.findById(user.roleId);
+      console.log("Check role");
+      if (roleUser === 2) {
+        next();
+      } else {
+        res.status(403).json("You are not alowed to do that!");
+      }
+    } catch(e) {
+      return res.status(403).json("You are not alowed to do that!");
+    }
+};
+const checkRoleTourGuide = async(req, res, next) => {
+  try {
+    const user = await user.findById(req.user.id);
+    const roleUser = await role.findById(user.roleId);
+    console.log("Check role");
+    if (roleUser === 1) {
       next();
     } else {
       res.status(403).json("You are not alowed to do that!");
     }
-  });
-};
+  } catch(e) {
+    return res.status(403).json("You are not alowed to do that!");
+  }
+}
+const checkRoleCustomer = async(req, res, next) => {
+  try {
+    const user = await user.findById(req.user.id);
+    const roleUser = await role.findById(user.roleId);
+    console.log("Check role");
+    if (roleUser === 0) {
+      next();
+    } else {
+      res.status(403).json("You are not alowed to do that!");
+    }
+  } catch(e) {
+    return res.status(403).json("You are not alowed to do that!");
+  }
+}
 const verifyTokenAndTourguide = (req, res, next) => {
   verifyToken(req, res, () => {
     if (req.user.Tourguide) {
@@ -46,9 +89,9 @@ const verifyTokenAndTourguide = (req, res, next) => {
 module.exports = {
   verifyToken,
   verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
+  CheckLogin,
+  CheckRoleAdmin,
+  checkRoleTourGuide,
+  checkRoleCustomer,
   verifyTokenAndTourguide,
- 
-
-
-};
+}

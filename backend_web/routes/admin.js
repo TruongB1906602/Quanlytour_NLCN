@@ -6,11 +6,12 @@ const User = require("../models/User");
 const {
   verifyToken,
   verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
+  CheckLogin,
+  CheckRoleAdmin,
 } = require("./verifyToken")
 
 const router = require("express").Router();
-router.post("/", verifyTokenAndAdmin, async (req, res) => {
+router.post("/", CheckLogin, CheckRoleAdmin, async (req, res) => {
   const newAdmin = new Admin(req.body);
   try {
     const savedAdmin = await newAdmin.save();
@@ -36,7 +37,7 @@ router.put("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// Chỗ gây lỗi Check Admin
 //DELETE
 router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
@@ -46,9 +47,9 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// 
 //GET Admin
-router.get("/find/:id",async (req, res) => {
+router.get("/find/:id", CheckLogin, CheckRoleAdmin, async (req, res) => {
   try {
   
     const newProduct = await Product.findById(req.params.id);
@@ -69,30 +70,25 @@ router.get("/find/:id",async (req, res) => {
 
 
 //GET ALL AdminS
-router.get("/",async (req, res) => {
+router.get("/", CheckLogin, CheckRoleAdmin, async (req, res) => {
 
     try{
-        const Products = await Product.find();
-        const Orders = await Order.find();
-        const Carts = await Cart.find();
-        const Users = await User.find();
-        const Pays = await Pay.find();
+      const Products = await Product.find();
+      const Orders = await Order.find();
+      const Carts = await Cart.find();
+      const Users = await User.find();
+      const Pays = await Pay.find();
       
-        res.status(200).json({
-            Products,
-            Orders,
-            Carts,
-            Users,
-            Pays
-        });
+      res.status(200).json({
+          Products,
+          Orders,
+          Carts,
+          Users,
+          Pays
+      });
     }catch (err) {
-             res.status(500).json(err);
-
+      res.status(500).json(err);
     }
-   
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
 });
 
 module.exports = router;

@@ -2,7 +2,7 @@ const User = require("../models/User");
 const {
   verifyToken,
   verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
+  CheckRoleAdmin,
   verifyTokenAndTourguide,
 
 } = require("./verifyToken");
@@ -47,7 +47,7 @@ router.get("/find/:id", async (req, res) => {
 });
 
 //GET ALL USER
-router.get("/",verifyTokenAndAdmin, async (req, res) => {
+router.get("/",CheckRoleAdmin, async (req, res) => {
   const query = req.query.new;
   try {
     const users = query
