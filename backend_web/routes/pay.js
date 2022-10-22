@@ -1,15 +1,10 @@
 const Pay = require("../models/Pay");
-const {
-  verifyToken,
-  verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
-} = require("./verifyToken");
 
 const router = require("express").Router();
 
 //CREATE
 
-router.post("/", verifyToken,async (req, res) => {
+router.post("/",async (req, res) => {
   const newPay = new Pay(req.body);
   try {
       const savedPay = await newPay.save();
@@ -19,7 +14,7 @@ router.post("/", verifyToken,async (req, res) => {
   }
 });
 //UPDATE
-router.put("/:id",verifyToken, async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const updatedPay = await Pay.findByIdAndUpdate(
       req.params.id,

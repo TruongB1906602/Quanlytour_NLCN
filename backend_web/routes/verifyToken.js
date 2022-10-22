@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
-
+const User  =require("../models/User");
+const Role = require("../models/Role");
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.token;
   if (authHeader) {
@@ -26,9 +27,10 @@ const verifyTokenAndAuthorization = (req, res, next) => {
 };
 const CheckLogin = async(req, res, next) => {
   try {
-    const user = await user.findById(req.user.id);
-    if(!!user) {
-      req.user = user;
+    const id =  req.user.id;
+    const user = await User.findById(id);
+    if(user) {
+      req.userId = id;
       next();
     }else return res.status(403).json("You are not logging in!");
   }catch(e) {
@@ -37,10 +39,10 @@ const CheckLogin = async(req, res, next) => {
 }
 const CheckRoleAdmin = async(req, res, next) => {
     try {
-      const user = await user.findById(req.user.id);
-      const roleUser = await role.findById(user.roleId);
-      console.log("Check role");
-      if (roleUser === 2) {
+      const user = await User.findById(req.userId);
+      const roleUser = await Role.findById(user.roleId);
+      console.log("Check Role");
+      if (roleUser.roleValue === 2) {
         next();
       } else {
         res.status(403).json("You are not alowed to do that!");
@@ -51,10 +53,10 @@ const CheckRoleAdmin = async(req, res, next) => {
 };
 const checkRoleTourGuide = async(req, res, next) => {
   try {
-    const user = await user.findById(req.user.id);
-    const roleUser = await role.findById(user.roleId);
-    console.log("Check role");
-    if (roleUser === 1) {
+    const user = await User.findById(req.userId);
+    const roleUser = await Role.findById(user.roleId);
+    
+    if (roleUser.roleValue >= 1) {
       next();
     } else {
       res.status(403).json("You are not alowed to do that!");
@@ -65,10 +67,9 @@ const checkRoleTourGuide = async(req, res, next) => {
 }
 const checkRoleCustomer = async(req, res, next) => {
   try {
-    const user = await user.findById(req.user.id);
-    const roleUser = await role.findById(user.roleId);
-    console.log("Check role");
-    if (roleUser === 0) {
+    const user = await User.findById(req.userId);
+    const roleUser = await Role.findById(user.roleId);    
+    if (roleUser.roleValue >= 0) {
       next();
     } else {
       res.status(403).json("You are not alowed to do that!");

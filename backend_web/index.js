@@ -10,6 +10,14 @@ const cartRoute = require("./routes/cart");
 const payRoute = require("./routes/pay");
 const adminRoute = require("./routes/admin");
 const orderRoute = require("./routes/order");
+const {
+  verifyToken,
+  verifyTokenAndAuthorization,
+  CheckLogin,
+  CheckRoleAdmin,
+  checkRoleTourGuide,
+  checkRoleCustomer,
+} = require("./routes/verifyToken");
 //const stripeRoute = require("./routes/stripe");
 const cors = require("cors");
 
@@ -29,9 +37,12 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 app.use("/api/hotels", hotelRoute);
-app.use("/api/admins", adminRoute);
-
-app.use("/api/pays",  payRoute);
+app.use("/api/admins", verifyToken,CheckLogin, CheckRoleAdmin,adminRoute);
+//Note
+app.use("/api/tourguide",  verifyToken,CheckLogin, checkRoleTourGuide);
+app.use("/api/customer", verifyToken, CheckLogin, checkRoleCustomer);
+//
+app.use("/api/pays", verifyToken, payRoute);
 app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 

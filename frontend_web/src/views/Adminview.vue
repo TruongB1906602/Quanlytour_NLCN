@@ -132,14 +132,12 @@
                     async getall(){
                 try{
                     const data = await AdminService.getAll();
-                    console.log(data);
-                     this.products =data.Products;
-                     this.hotels = data.Hotels;
-                     this.users = data.Users;
-                     this.pays =  data.Pays;
-                     this.orders = data.Orders;
+                        this.products =data.Products;
+                        this.hotels = data.Hotels;
+                        this.users = data.Users;
+                        this.pays =  data.Pays;
+                        this.orders = data.Orders;
                 }catch(error){
-                    console.log(error);
                     this.toast();
                         setTimeout(()=>{
                             this.$router.push({name:"ShopMain"});

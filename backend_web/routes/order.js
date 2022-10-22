@@ -3,7 +3,7 @@ const Order = require("../models/Order");
 const {
   verifyToken,
   verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
+  CheckRoleAdmin,
   verifyTokenAndTourguide,
 } = require("./verifyToken");
 
@@ -23,7 +23,7 @@ router.post("/", verifyToken, async (req, res) => {
 });
 
 //UPDATE
-router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
+router.put("/:id", CheckRoleAdmin, async (req, res) => {
   try {
     const updatedOrder = await Order.findByIdAndUpdate(
       req.params.id,
