@@ -63,7 +63,6 @@ router.get("/find/:id", async (req, res) => {
 });
 
 
-
 //GET ALL TourguideS
 router.get("/", async (req, res) => {
 
