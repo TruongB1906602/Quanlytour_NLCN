@@ -93,9 +93,9 @@ const routes = [
         component: () => import("@/views/Addtourguide.vue"),
     },
     {
-        path: "/tourguidemange",
-        name: "tourguidemanage",
-        component: () => import("@/views/Tourguidemanage.vue"),
+        path: "/tourguide",
+        name: "tourguide",
+        component: () => import("@/views/Tourguideview.vue"),
     },
     {
         path: "/Success",

@@ -1,7 +1,6 @@
-const Product = require("../models/Product");
-const Cart = require("../models/Cart");
+
 const Order = require("../models/Order");
-const Pay = require("../models/Pay");
+
 const User = require("../models/User");
 
 const router = require("express").Router();
@@ -46,14 +45,9 @@ router.put("/:id", async (req, res) => {
 //GET Tourguide
 router.get("/find/:id", async (req, res) => {
   try {
-  
-    const newProduct = await Product.findById(req.params.id);
-    const newOrder = await Order.findById(req.params.id);
-    const newCart = await Cart.findById(req.params.id);
-    const newUser = await User.findById(req.params.id);
-    const newPay = await Pay.findById(req.params.id);
 
-     
+    const newOrder = await Order.findById(req.params.id);
+    const newUser = await User.findById(req.params.id);
     res.status(200).json({
         
     });
@@ -67,18 +61,19 @@ router.get("/find/:id", async (req, res) => {
 router.get("/", async (req, res) => {
 
     try{
-      const Products = await Product.find();
+    
       const Orders = await Order.find();
-      const Carts = await Cart.find();
+       
+   
       const Users = await User.find();
-      const Pays = await Pay.find();
+   
       
       res.status(200).json({
-          Products,
+        id:req.id,
           Orders,
-          Carts,
+      
           Users,
-          Pays
+
       });
     }catch (err) {
       res.status(500).json(err);
