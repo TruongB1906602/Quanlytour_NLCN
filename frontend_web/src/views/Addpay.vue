@@ -1,14 +1,14 @@
 
 
 <script>
+
   import toastjs from "../assets/js/toasts";
   import toastsVue from "../components/toasts.vue";
   import PayService from "../services/Pay.service";
   import Cartshopdetails from "@/views/Cartshopdetails.vue";
   import HeaderShop from '@/components/HeaderShop.vue';
   import Paymentform1 from "../components/Paymentform1.vue";
-  
-  
+
   export default {
     props:{
 
@@ -90,23 +90,52 @@
               </nav>
   <toastsVue></toastsVue>
     <div class="page">
-      <div class="pays"> 
-                  <Paymentform1
-                          
-                            :pay="{}"	
-                            @submit:pay="addpay"
-                            :resetAfterSubmit="false"
-                          
-                  />
-      </div>
+        <div class="pays"> 
+                    <Paymentform1
+                            
+                              :pay="{}"	
+                              @submit:pay="addpay"
+                              :resetAfterSubmit="false"
+                            
+                    />
+                  <div class="support">
+                      <h3>Hỗ trợ trực tuyến</h3>
+                      <ul>
+                        <li> 
+                              <strong>Đặt tour</strong>
+                              <span> Call: 09 474 71181</span>
+                              <span>Email: travelviet@gmai.com</span>
+                              <p class="social">
+                                  <a href="" class="hk-ic hk-f">Facebok</a>
+
+                                  <a href="" class="hk-ic hk-f">Zalo</a>
+
+
+                              </p>
+                        </li>
+                        <li> 
+                              <strong>Tư vấn du lịch</strong>
+                              <span> Call: 09 3245 6748</span>
+                              <span>Email: travelviet@gmai.com</span>
+                        </li>
+                        <li> 
+                              <strong> Mọi chi tiết xin liên hệ về địa chỉ:</strong>
+                              <span>hotro@gmail.com</span>
+                        </li>
+
+
+
+                      </ul>
+                  </div>
+        </div>
+
+      
      
-        
-        
-      </div>
+     </div>
     </div>
-    
+
      
-    
+
   </template>
   <style scoped>
   
@@ -138,8 +167,75 @@
           background: white;
       }
       .pays{
-          margin-left:30px;
-        
+       margin-left: 12rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       
+      }
+      .support h3:before {
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: url(//tadivui.com/wp-content/themes/combodulich/images/front/sprite.png) no-repeat -97px -28px;
+    margin-right: 15px;
+}
+    
+.support h3::after {
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: url(//tadivui.com/wp-content/themes/combodulich/images/front/sprite.png) no-repeat -97px -28px;
+    margin-left: 15px;
+}
+
+      .support{
+        border: 1px solid #e5e5e5;
+        background: #fafafa;
+        padding: 20px 0 0;
+        margin-bottom: 30rem;
+        margin-left: 2rem;
+      }
+      .support h3{
+        background: #169dca;
+        margin: 0 -1px -1px;
+        font: 600 16px/20px 'Open Sans', sans-serif;
+        color: #fff;
+        text-transform: uppercase;
+        padding: 11px 0 9px;
+        text-align: center;
+      }
+      .support ul li{
+        padding: 15px 25px 10px;
+        border-top: 1px solid #e5e5e5;
+        position: relative;
+        list-style: none;
+      }
+      .support strong{
+          font: 400 14px/20px 'Roboto', sans-serif;
+          color: #f00;
+          text-transform: uppercase;
+          display: block;
+          margin-bottom: 8px;
+      }
+      .support span{
+        font: 400 14px/20px 'Roboto', sans-serif;
+        color: #555;
+        display: block;
+        margin-bottom: 8px;
+      }
+      .social{
+        overflow: hidden;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+      }
+      .social a{
+        display: inline-block;
+        
+        height: 16px;
+        margin: 0 4px;
       }
   </style>
