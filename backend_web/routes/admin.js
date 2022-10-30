@@ -3,6 +3,9 @@ const Cart = require("../models/Cart");
 const Order = require("../models/Order");
 const Pay = require("../models/Pay");
 const User = require("../models/User");
+const New = require("../models/News");
+
+
 
 
 const router = require("express").Router();
@@ -53,6 +56,7 @@ router.get("/find/:id", async (req, res) => {
     const newCart = await Cart.findById(req.params.id);
     const newUser = await User.findById(req.params.id);
     const newPay = await Pay.findById(req.params.id);
+    const newNews = await News.findById(req.params.id);
 
      
     res.status(200).json({
@@ -74,17 +78,20 @@ router.get("/", async (req, res) => {
       const Carts = await Cart.find();
       const Users = await User.find();
       const Pays = await Pay.find();
+      const News = await New.find();
       
       res.status(200).json({
           Products,
           Orders,
           Carts,
           Users,
-          Pays
+          Pays,
+          News,
       });
     }catch (err) {
       res.status(500).json(err);
     }
 });
+//sadsdas
 
 module.exports = router;
