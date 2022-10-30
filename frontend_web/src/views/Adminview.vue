@@ -1,5 +1,4 @@
 <script>
-
     import ListUser from "../components/ListUser.vue";
     import AdminService from "../services/Admin.service";
     import toastsVue from "../components/toasts.vue";
@@ -7,17 +6,19 @@
     import Listtourguide from "../components/Listtourguide.vue";
     import ListOrder from "@/components/ListOrder.vue";
     import ListHotel from "../components/ListHotel.vue";
+    import ListNews from "../components/ListNews.vue";
     import Productcard from "../components/Productcard.vue";
     import Hotelcard from "../components/Hotelcard.vue";
     import Usercard from "../components/Usercard.vue";
     import Paycard from "../components/Paycard.vue";
     import Addcreatepay from "@/views/Addcreatepay.vue";
     import AddProduct from "@/views/AddProduct.vue";
-    import Tourguidemange from "@/views/Tourguidemanage.vue";
+ 
     import EditPay from "../views/EditPay.vue";
     import EditProduct from "../views/EditProduct.vue";
     import toast from "../assets/js/toasts";
     import PayList from "../components/ListPay.vue";
+    import Addnews from "@/views/Addnews.vue";
         export default{
             data(){
                 return{
@@ -26,9 +27,11 @@
                     hotels:[],
                     pays:[],
                     orders:[],
+                    news:[],
                     activeIndex:-1,
                     activeIndex1:-1,
                     activeUser:-1,
+                    activeNews:-1,
                     activeIndexPay:-1,
                     activeIndexOrder:-1,
                
@@ -93,28 +96,37 @@
                          list[this.activeUser].classList.add("active");
                             return this.users[this.activeUser];
                     }
+                },
+                getindexnews(){
+                     if(this.activeNews!=-1){
+                         const list = document.querySelectorAll(".news-item");
+                         list.forEach(element => {
+                             element.classList.remove("active");
+                         });
+                         list[this.activeNews].classList.add("active");
+                            return this.news[this.activeNews];
+                    }
                 }
             },
             components:{
-       
-        ListUser,
-        ListProduct,
-        toastsVue,
-        Productcard,
-        Usercard,
-        ListHotel,
-        Hotelcard,
-        Listtourguide,
-        PayList,
-        Paycard,
-        ListOrder,
-        Addcreatepay,
-        AddProduct,
-        EditProduct,
-        EditPay,
-        Tourguidemange,
-    
-    },
+    ListUser,
+    ListProduct,
+    toastsVue,
+    Productcard,
+    Usercard,
+    ListHotel,
+    Hotelcard,
+    Listtourguide,
+    PayList,
+    Paycard,
+    ListOrder,
+    Addcreatepay,
+    AddProduct,
+    EditProduct,
+    EditPay,
+    Addnews,
+    ListNews,
+},
             methods:{
                    showBlock(number) {
                     this.currentBlock = number;
@@ -137,6 +149,7 @@
                         this.users = data.Users;
                         this.pays =  data.Pays;
                         this.orders = data.Orders;
+                        this.news = data.News;
                 }catch(error){
                     this.toast();
                         setTimeout(()=>{
@@ -163,7 +176,7 @@
             <!-- Sidebar -->
             <div class="bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">  
-                     <!-- <i class="fas fa-user-secret me-2"></i> -->
+                  
                      <img style="width:50px;margin-bottom: 25px;" src="https://cdn-icons-png.flaticon.com/512/2206/2206248.png" alt="">
                      Admin
                 </div>
@@ -209,13 +222,13 @@
                             </ul>
                         </li>
                        <li @click="showBlock(6)">
-                           <a href="#user"> <label for="" class="six">
+                           <a href="#user"> <label for="" >
                             <i class="fa-solid fa-user"></i>
                             Quản lí người dùng </label></a>
                         </li>
 
                         <li @click="showBlock(7)">
-                            <a href="#tourguide">   <label for="" class="six">
+                            <a href="#tourguide">   <label for="">
                                 <img style="width:20px;" src="https://cdn-icons-png.flaticon.com/512/3986/3986295.png" alt="">
                             Quản lí hướng dẫn viên</label></a>
                         </li>
@@ -230,6 +243,23 @@
                 
                            
                         </li>
+                       
+                        <li >
+                            <label for="btn-5" class="six">
+                                <i class="fa-solid fa-newspaper"></i>
+                                 Quản lí tin tức
+                                <span class="fas fa-caret-down"></span>
+                            </label>
+                                <input type="checkbox" name="" id="btn-5">
+                            <ul>
+                                <li @click="showBlock(10)"><a href="#news" ><i class="fa-solid fa-list"></i>Tin tức</a>
+                                </li>
+                                <li @click="showBlock(9)"><a href="#addnews"><i class="fa-sharp fa-solid fa-plus"></i>Thêm tin mới</a>
+                                </li>
+            
+                            </ul>
+                        </li>
+                        
                         
                         
                     </ul>
@@ -377,6 +407,9 @@
                             <div class="create-tour"  v-else-if="currentBlock == 5" >
                                 <AddProduct/>
                             </div>
+                          
+                          
+                          
 
                             <div style="width:100%"  v-else-if="currentBlock == 6" >
                                 <div class="list_users1 w-50" >
@@ -386,19 +419,7 @@
                                     <div class="list_item_user d-flex" id="user">
                                         <ListUser :users="users"  :refeshlist="getall" v-model:activeUser="activeUser">
                                         </ListUser>
-                                        <div class="card_product border border-light border-2 h-100 bg-light text-dark" style="padding: 10px;" v-if="getindexuser">  
-                                            <h5>Chi tiết người dùng</h5>
-                                            <!-- <Usercard :users="getindexuser"></Usercard> -->
-                                            <!-- <router-link
-                                                :to="{
-                                                name: 'edituser',
-                                                params: { id: getindexuser._id },
-                                                }"
-                                            >
-                                            <span class="badge bg-warning text-dark">
-                                                <i class="bi bi-pencil-square"></i> Chỉnh sửa</span>
-                                            </router-link> -->
-                                            </div>
+                                      
                                         </div>
                                     </div>
                             </div> 
@@ -442,6 +463,20 @@
                                     </div>
                                 
                             </div>
+                            <div class="create-tour"  v-else-if="currentBlock ==9" >
+                              <Addnews/>
+                             </div>
+
+                             <div class="list-tour"  v-else-if=" currentBlock ==10" >
+                                <div class="heading">
+                                    <h3 class="fs-4 mb-3">Tin Tức</h3>
+                                </div>
+                                <div class="list_item_news d-flex" id="news" > 
+                                    <ListNews :news="news" :refeshlist="getall" :getindexnews="getindexnews" v-model:activeNews="activeNews">
+                                    </ListNews>
+                                </div>
+                                
+                            </div> 
     
                             
                         </div>

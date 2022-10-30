@@ -48,11 +48,11 @@ import PayService from '../services/Pay.service';
           this.toasts.duration=1000
         
 
-              this.$router.push("/addpay")
+              this.$router.push("/Cart/addpay")
 
         
   
-          this.toastsjs();
+       
          }else{
               this.toasts.title = "Failed",
               this.toasts.msg = "Bạn chưa có sản phẩm",
@@ -147,7 +147,7 @@ import PayService from '../services/Pay.service';
                 <div class="col title">Số khách</div>
                 <div class="w-100"></div>
                 <div class="col">Người lớn</div>
-                <div class="col">{{Intl.NumberFormat('de-DE',{style: 'currency',currency: 'VND'}).format(item.price - (item.sale/100) * item.price)}}</div>
+                <div class="col">{{Intl.NumberFormat('de-DE',{style: 'currency',currency: 'VND'}).format(item.price)}}</div>
                 <div class="col"><input type="number" placeholder="Nhập vào số lượng" v-model="adultquantity"></div>
                 <div class="w-100"></div>
                 <div class="col">Trẻ em</div>
@@ -177,12 +177,13 @@ import PayService from '../services/Pay.service';
          </div>
          
             <div class="total" >
-                <h5 class="price">Thành tiền</h5><span style="font-size:25px ;font-weight:600">{{Intl.NumberFormat('de-DE',{style: 'currency',currency: 'VND'}).format(total)}} </span>
+                <h5 class="price">Thành tiền</h5><span style="font-size:25px; font-weight:600;">{{Intl.NumberFormat('de-DE',{style: 'currency',currency: 'VND'}).format(total)}} </span>
             </div> 
-            <div class="btn-order" @click="registerproduct"
+            <div class="btn-order" @click="registerproduct"  
                v-show="title !== '1'"
             >
             <button @click="getdata" >Thanh toán</button>
+            <router-link to="/Cart/addpay">buton</router-link>
         </div>
     </div>      
       
