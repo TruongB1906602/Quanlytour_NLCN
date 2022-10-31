@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-<<<<<<< HEAD
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const userRoute = require('./routes/user');
@@ -12,20 +11,6 @@ const payRoute = require('./routes/pay');
 const adminRoute = require('./routes/admin');
 const orderRoute = require('./routes/order');
 const tourGuideRoute = require('./routes/tourguide');
-=======
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const userRoute = require("./routes/user");
-const authRoute = require("./routes/auth");
-const productRoute = require("./routes/product");
-const  hotelRoute = require("./routes/hotel");
-const cartRoute = require("./routes/cart");
-const payRoute = require("./routes/pay");
-const adminRoute = require("./routes/admin");
-const orderRoute = require("./routes/order");
-const tourguideRoute = require("./routes/tourguide");
-const newsRoute = require("./routes/news");
->>>>>>> 19fb08bec3c177d13408a4bf1b823f1f8811d736
 const {
    verifyToken,
    verifyTokenAndAuthorization,
@@ -48,7 +33,6 @@ mongoose
 
 app.use(cors());
 app.use(express.json());
-<<<<<<< HEAD
 app.use(express.urlencoded({ extended: false }));
 app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
@@ -62,22 +46,6 @@ app.use('/api/customer', verifyToken, CheckLogin, checkRoleCustomer);
 app.use('/api/pays', verifyToken, payRoute);
 app.use('/api/carts', cartRoute);
 app.use('/api/orders', orderRoute);
-=======
-app.use(express.urlencoded({ extended: false})) 
-app.use("/api/auth", authRoute);
-app.use("/api/users", userRoute);
-app.use("/api/products", productRoute);
-app.use("/api/hotels", hotelRoute);
-app.use("/api/news", newsRoute);
-app.use("/api/admins", verifyToken,CheckLogin, CheckRoleAdmin,adminRoute);
-//Note
-app.use("/api/tourguides",  verifyToken,CheckLogin, checkRoleTourGuide,tourguideRoute);
-app.use("/api/customer", verifyToken, CheckLogin, checkRoleCustomer);
-
-app.use("/api/pays", verifyToken, payRoute);
-app.use("/api/carts", cartRoute);
-app.use("/api/orders", orderRoute);
->>>>>>> 19fb08bec3c177d13408a4bf1b823f1f8811d736
 
 app.listen(process.env.PORT || 8000, () => {
    console.log('Backend server is running!');
