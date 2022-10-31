@@ -240,8 +240,6 @@ import router from '../router';
 }
 .container-fluid{
   border: 1px solid #edf1f7;
-  
-
   background-color: white;
   position: fixed;
   
