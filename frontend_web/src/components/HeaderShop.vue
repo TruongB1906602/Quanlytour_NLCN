@@ -1,4 +1,5 @@
 <script>
+
 import CartService from '../services/Cart.service';
 import OrderService from '../services/Order.service';
 import { mapState,mapActions } from "pinia";
@@ -127,9 +128,9 @@ import router from '../router';
       
         </li>
            <li class="nav-item dropdown">
-             <router-link to="/hotel" class="nav-link" aria-current="page">
+             <router-link to="/newsview" class="nav-link" aria-current="page">
           <a class="nav-link " href="#" id="navbarDropdown" role="button"  aria-expanded="false">
-             Khách Sạn
+             Tin Tức
           </a>
           </router-link>
         
@@ -214,14 +215,22 @@ import router from '../router';
 <style scoped>
 .main{
  width: 30%;
-  height: 65px;
-  margin-top: 5px;
+  
+  margin-top: 50px;
 }
 .navbar .navbar-expand-lg .navbar-dark .bg-dark{
   background-color: #F5F5F5!important;
 }
 .navbar-expand-lg{
   background: white;
+ 
+}
+.navbar{
+
+  width: 100px;
+  z-index: 100;
+  background: white;
+  
 }
 .login{
    margin-top: 10px;
@@ -230,9 +239,12 @@ import router from '../router';
     color: black!important;
 }
 .container-fluid{
-  border: none;
-  height: 70px;
+  border: 1px solid #edf1f7;
+  
+
   background-color: white;
+  position: fixed;
+  
 }
 .connect-shop{
   padding: 0;
@@ -241,8 +253,6 @@ import router from '../router';
 } 
 .right{
   margin-top: 20px;
-  
-  
   display: inline-block;
 
 }
@@ -335,7 +345,7 @@ a.text-white4  ion-icon{
 .navbar-brand img{
   width: 170px;
   margin-left: 40%;
-   margin-top:10px;
+   margin-top:50px;
 }
 .navbar-brand {
     float: left;
@@ -369,14 +379,14 @@ a.text-white4  ion-icon{
     position: absolute;
     width: 50px;
     height: 50px;
-    
+    margin: 10px auto;
    
 
 }
 ul.navbar-nav{
     display: flex;
     height: 80px;
-    margin-bottom: 10px!important;
+   margin: 50px auto;
     justify-content: center;
     align-items: center;
 }
