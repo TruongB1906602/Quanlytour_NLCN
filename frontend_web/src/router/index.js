@@ -1,6 +1,7 @@
 import {createRouter,createWebHistory } from "vue-router";
 import ShopView from "@/views/ShopView.vue";
-
+import Cart from '@/views/CartShop.vue';
+import Addpay from '@/views/Addpay.vue';
 const routes = [
     {
         path: "/",
@@ -76,11 +77,15 @@ const routes = [
       
       {
             path: "/Cart",
-            name: 'CartShop',
-             component:() => import("@/views/CartShop.vue"),
+            name: "Cart",
+            component: Cart,
      },
-
-        
+     {
+        path: "/Cart/addpay",
+        name: "addpay",
+        component: () => import("@/views/Addpay.vue"),
+    
+    },
     
     {
         path: "/addproduct",
@@ -108,11 +113,7 @@ const routes = [
         name: "addhotel",
         component: () => import("@/views/AddHotel.vue"),
     },
-    {
-        path: "/addpay",
-        name: "addpay",
-        component: () => import("@/views/Addpay.vue"),
-    },
+    
     {
         path: "/addcreatepay",
         name: "addcreatepay",
@@ -123,6 +124,11 @@ const routes = [
         path: "/editproduct/:id",
         name: "editproduct",
         component: () => import("@/views/EditProduct.vue"),
+    },
+    {
+        path: "/editnews/:id",
+        name: "editnews",
+        component: () => import("@/views/EditNew.vue"),
     },
     {
         path: "/edittourguide/:id",
@@ -170,6 +176,11 @@ const routes = [
         path: "/tourguideview",
         name: "tourguideview",
         component: () => import("@/views/Tourguideview.vue"),
+    },
+    {
+        path: "/newsview",
+        name: "newsview",
+        component: () => import("@/views/Newsview.vue"),
     },
     
     {
