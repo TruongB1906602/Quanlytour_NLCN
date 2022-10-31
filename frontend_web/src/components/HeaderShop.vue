@@ -299,6 +299,7 @@ import router from '../router';
     color: #D3D3D3;
     border: 2px solid #F8F8FF;
 }
+/* aaaa */
 .text-white1 {
       width: 90px;
       height: 40px;
