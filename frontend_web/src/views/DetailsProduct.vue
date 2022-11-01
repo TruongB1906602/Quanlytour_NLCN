@@ -1,4 +1,5 @@
 <script>
+
     import HeaderShop from '@/components/HeaderShop.vue'
     import ProductService from '../services/Product.service'
     import CartService from '../services/Cart.service'
@@ -86,7 +87,7 @@
                                 console.log(this.carts.userId );
                           this.cartitem.userId= this.currentUser._id;
                            console.log(this.detailproduct.title);
-                            // this.cartitem.userId= this.currentUser._id;
+                
                             this.carts.map((cartproduct)=>{
                                     if(cartproduct.productId == this.cartitem.productId ){
                                         this.cartitem.quantity = this.cartitem.quantity + cartproduct.quantity;
@@ -160,7 +161,7 @@
             </nav>
 
         </div>
-          <h3 style="font-size: 22px;  margin-left: 220px;font-weight: 700; width: 60%;">{{detailproduct.title}}</h3>
+          <h3 style="font-size: 22px;  margin-left: 220px;font-weight: 700; width: 60%; margin-top: 3rem;;">{{detailproduct.title}}</h3>
     </div>
     <div class="wrapper">
         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -389,8 +390,8 @@ ul.nav {
         overflow: hidden;
     }
     .name{
-        font-size: 16px;
-   
+   font-size: 16px;
+
     font-weight: 700;
     padding-bottom: 10px;
     margin-bottom: 10px;
@@ -406,11 +407,12 @@ ul.nav {
     border-bottom: solid 1px rgba(0,0,0,.15);
     }
     .product-main{
-        display: inline-block;
-        width:335px;
+         display: inline-block;
+         width:335px;
          border-bottom: solid 1px rgba(0,0,0,.15);
          border-right: solid 1px rgba(0,0,0,.15);
          border-left: solid 1px rgba(0,0,0,.15); 
+       
     }
    
     .size_product,.color_product{
