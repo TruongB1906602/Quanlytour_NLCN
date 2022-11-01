@@ -10,6 +10,7 @@ const cartRoute = require('./routes/cart');
 const payRoute = require('./routes/pay');
 const adminRoute = require('./routes/admin');
 const orderRoute = require('./routes/order');
+const newsRoute = require('./routes/news');
 const tourGuideRoute = require('./routes/tourguide');
 const {
    verifyToken,
@@ -38,6 +39,7 @@ app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
 app.use('/api/hotels', hotelRoute);
+app.use('/api/news', newsRoute);
 app.use('/api/admins', verifyToken, CheckLogin, CheckRoleAdmin, adminRoute);
 //Note
 app.use('/api/tourguide', verifyToken, CheckLogin, checkRoleTourGuide, tourGuideRoute);

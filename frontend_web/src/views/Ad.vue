@@ -90,7 +90,7 @@
     position: absolute;
     top: 60%;
     transform: translate(-50%, -50%);
-    left:10%;
+    left:14%;
  }
  
  .navi-right{
@@ -107,7 +107,7 @@
     position: absolute;
     top: 55%;
     transform: translate(-50%, -50%);
-    right:7%;
+    right:10%;
  }
  .carousel-inner{
     overflow: hidden;
