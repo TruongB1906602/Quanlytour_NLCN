@@ -172,6 +172,7 @@ const routes = [
         name: "tourguideview",
         component: () => import("@/views/Tourguideview.vue"),
     },
+    
     {
         path: "/newsview",
         name: "newsview",

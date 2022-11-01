@@ -2,7 +2,6 @@
     import SliderShop from '@/components/SliderShop.vue'
 
     import HeaderShop from '@/components/HeaderShop.vue'
-    import ProductService from '../services/Product.service'
     import { mapState } from "pinia";
     import { useAuthStore } from "@/stores/Auth.store";
     import toastsVue from '../components/toasts.vue';
@@ -16,7 +15,7 @@
          data:() =>{
             return {
               news:[],
-                Products:[],
+
             }
         },
         components:{
@@ -76,7 +75,7 @@
             <strong style="display: inline-block;">
                 <img :src=new1.img[0] style="width: 200px;margin: 0 10px;height: 140px; " alt="">
             </strong>     
-            <span  id="noidung" style="width: 30rem;height:70px;display: inline-block;font: 400 12px/18px 'Roboto', sans-serif; color: #444;">{{new1.title}}</span>
+            <span  id="noidung" style="width: 25rem;height:70px;display: inline-block;font: 400 14px/18px 'Roboto', sans-serif;">{{new1.title}}</span>
            
     </div>
 
@@ -88,6 +87,7 @@
 </template>  
 <style scoped>
 .title{
+   
     text-transform: uppercase;
     color: #8ed13d;
     font-size: 30px;
@@ -97,14 +97,17 @@
     margin-top: 1rem;
 }
 .details{
+   margin-top: 3rem;
     display: flex;
     width: 50rem;
     height: 200px;
     overflow: hidden;
+    margin-left: 3rem;
    
 }
 span:hover{
-    background-color: rgb(255, 175, 47);
+
+    color:rgba(220, 220, 220, 0.833);
 }
 
 
