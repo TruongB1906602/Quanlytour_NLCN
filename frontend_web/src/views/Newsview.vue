@@ -72,11 +72,17 @@
         :key="new1._id"
         class="details"
         >
-            <strong style="display: inline-block;">
-                <img :src=new1.img[0] style="width: 200px;margin: 0 10px;height: 140px; " alt="">
-            </strong>     
-            <span  id="noidung" style="width: 25rem;height:70px;display: inline-block;font: 400 14px/18px 'Roboto', sans-serif;">{{new1.title}}</span>
-           
+            <router-link :to="{
+                        name: 'news',
+                        params: { id: new1._id },
+                            }">
+                <strong style="display: inline-block;">
+                    <img :src=new1.img[0] style="width: 200px;margin: 0 10px;height: 140px; " alt="">
+                </strong>     
+                <span  id="noidung" style="width: 25rem;height:70px;display: inline-block;font: 400 14px/18px 'Roboto', sans-serif;">{{new1.title}}</span>
+            
+                    
+                </router-link>
     </div>
 
     
