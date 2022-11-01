@@ -7,7 +7,7 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="2000">
-          <img src="@/assets/images/phuquoc.jpg"  class="d-block w-100 " >
+          <img src="https://bizweb.dktcdn.net/100/379/266/themes/754774/assets/slider_1.jpg?1645597606857"  class="d-block w-100 " >
       
     </div>
     <div class="carousel-item" data-bs-interval="2000">
@@ -55,7 +55,7 @@
 
 </template>
 <style scoped>
-  
+
 .form-container form{
     background: #fff;
     box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
@@ -72,7 +72,7 @@
     bottom: 400px;
     width: 80%;
     left: 150px;
-   opacity: 90%;
+ 
 }
 
 .form-container form .inputBox{
