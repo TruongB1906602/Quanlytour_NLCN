@@ -68,12 +68,7 @@ const routes = [
         
       },  
       
-      {
-        path: "/slider1",
-        name: "slider1",
-        component:() => import("@/views/Slider1.vue"),
-        
-      },  
+      
       
       {
             path: "/Cart",
