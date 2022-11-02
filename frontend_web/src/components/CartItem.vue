@@ -1,6 +1,5 @@
 <script>
 import CartService  from '../services/Cart.service';
-import ProductService  from '../services/Product.service';
 import toastsVue from '../components/toasts.vue';
 import toastsjs from '../assets/js/toasts.js'
 import PayService from '../services/Pay.service';
@@ -77,6 +76,15 @@ import PayService from '../services/Pay.service';
           
             
         },
+       async payment(){
+            document.querySelector('.payment-box1').style.display='block'
+            document.querySelector('.payment-box2').style.display='none'
+           
+        },
+        async payment1(){
+            document.querySelector('.payment-box2').style.display='block'
+            document.querySelector('.payment-box1').style.display='none'
+        }
         
        
     },
@@ -155,7 +163,6 @@ import PayService from '../services/Pay.service';
                 <div class="col"><input type="number" placeholder="Nhập vào số trẻ em" v-model="childquantity"></div>
             </div>
          </div>
-
          <div class="container" 
          v-if="item.childquantity !=0  || item.adultquantity != 0  ">
             <h4 class="quote">Bảng giá</h4>
@@ -178,12 +185,35 @@ import PayService from '../services/Pay.service';
          
             <div class="total" >
                 <h5 class="price">Thành tiền</h5><span style="font-size:25px; font-weight:600;">{{Intl.NumberFormat('de-DE',{style: 'currency',currency: 'VND'}).format(total)}} </span>
+                <ul>
+                    <li @click="payment">
+                        <input type="radio" id="html" name="fav_language" value="HTML" checked="checked">
+                        <label for="html" name="fav_language" value="HTML">Thanh toán chuyển khoản ngân hàng</label>
+                        <div  class="payment-box1" style="display:block;">
+                                    <p>
+                                        Thực hiện thanh toán chuyển khoản ngay vào tài khoản ngân hàng của chúng tôi. Đơn hàng sẽ chuyển giao sau khi tiền đã chuyển tiền thành công.
+                                    </p>
+                        </div>
+                    </li>
+                    <li @click="payment1">
+                        <input type="radio" id="css" name="fav_language" value="CSS">
+                        <label for="css">Trả tiền mặt khi nhận PHIẾU SỬ DỤNG</label>
+                        <div class="payment-box2" style="display:none;">
+                                    <p>
+                                    Trả tiền mặt khi giao hàng, Du lịch Travel Việt sẽ gửi đến bạn phiếu xác nhận đặt tour, chúng tôi sẽ thu phí nhỏ thôi!.
+                                    </p>
+                        </div>
+                    </li>
+                    
+                </ul>
+                  
             </div> 
+            
             <div class="btn-order" @click="registerproduct"  
                v-show="title !== '1'"
             >
             <button @click="getdata" >Thanh toán</button>
-            <router-link to="/Cart/addpay">buton</router-link>
+       
         </div>
     </div>      
       
@@ -262,4 +292,62 @@ import PayService from '../services/Pay.service';
    h6{
     width: 300px;
    }
+   ul li{
+    line-height: 2;
+    text-align: left;
+    margin: 0;
+    font-weight: 400;
+    list-style: none;
+    padding: 0 10px;
+   }
+   ul{
+    text-align: left;
+    padding: 1em;
+    border-bottom: 1px solid #dff9e2ea;
+    margin: 0;
+    background: #f5fbfb;
+    list-style: none outside;
+   }
+   ul li label{
+    margin: 0 10px;
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+   }
+   .payment-box1, .payment-box2{
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5em 0;
+    font-size: .92em;
+    border-radius: 2px;
+    line-height: 1.5;
+    background-color: #dfdcde;
+    color: #515151;
+   }
+   .payment-box1::before {
+    content: "";
+    display: block;
+    border: 1em solid #dfdcde;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    position: absolute;
+    top: -0.75em;
+    left: 0;
+    margin: -1em 0 0 2em;
+}
+.payment-box2 ::before {
+    content: "";
+    display: block;
+    border: 1em solid #dfdcde;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    position: absolute;
+    top: -0.75em;
+    left: 0;
+    margin: -1em 0 0 2em;
+}
 </style>

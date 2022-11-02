@@ -37,9 +37,7 @@
         methods:{
             getdata(){
                     
-                    this.$router.push( { name: 'places'});
-          
-                                        
+                    this.$router.push( { name: 'places'});                        
             },
       
              async retrieveProduct() {
@@ -139,7 +137,7 @@
                                     name: 'details',
                                     params: { id: item._id },
                                         }">
-                                    <button  class="btnpay btn1" @click="nextdetailsproduct">Đặt tour</button>
+                                    <button  class="btnpay btn1" @click="nextdetailsproduct">Xem tour</button>
                                 </router-link>
                          </div>
                         
@@ -219,7 +217,7 @@
                                     name: 'details',
                                     params: { id: item._id },
                                         }">
-                                    <button  class="btnpay btn1" @click="nextdetailsproduct">Đặt tour</button>
+                                    <button  class="btnpay btn1" @click="nextdetailsproduct">Xem tour</button>
                                 </router-link>
                          </div>
                         
