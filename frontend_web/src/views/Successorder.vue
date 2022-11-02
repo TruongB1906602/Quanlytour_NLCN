@@ -1,7 +1,7 @@
 <script>
+
   import HeaderShop from '@/components/HeaderShop.vue';
-  import CartService from '../services/Cart.service';
-  
+  import CartService from '../services/Cart.service';  
   import OrderService from '../services/Order.service';
   import toastsVue from '../components/toasts.vue';
   import toastsjs from '../assets/js/toasts.js'
@@ -63,10 +63,11 @@
               this.toasts.type="error",
               this.toasts.duration=2000
               this.toastsjs(); 
+          
               setTimeout(()=>{
                    location.reload();
-                 },1000);
-  
+                 },2000);
+                 this.$router.push("/")
    
         },
         async edittour(){
@@ -145,8 +146,9 @@
        <div class="title-order">
       
         <h1 >    
+         <span ><img style="width:40px;" src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt=""></span> 
           Đặt hàng thành công! 
-         Đơn hàng của bạn đang chờ được phê duyệt! </h1>
+          Đơn hàng của bạn đang chờ được phê duyệt! </h1>
       
        </div>       
   <section class="h-100 h-custom" style="margin:0 100px;">
@@ -204,6 +206,7 @@
   }
   h1{
     font-size:25px;
+    margin-top: 3rem;
   }
   .title-order{
       display: flex;

@@ -78,12 +78,16 @@ import router from '../router';
          gotocart(){
           if(!this.currentUser){
             this.toast();
-          }else{
+
+          } else if( this.getlengthcarts ==0 ){
+            this.$router.push("/Cart"); 
+          } 
+          else{
             for(var i in this.order){
                   if(this.currentUser && this.order[i] != null){
                     this.$router.push("/Success"); 
-                  }else 
-                  this.$router.push("/Cart"); 
+                  }
+                
                 
                 
             }
@@ -378,7 +382,7 @@ a.text-white4  ion-icon{
     position: absolute;
     width: 50px;
     height: 50px;
-    margin: 10px auto;
+    margin: 3px auto;
    
 
 }
