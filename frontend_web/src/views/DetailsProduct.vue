@@ -153,7 +153,7 @@
     <toastsVue></toastsVue>
     <div class="heading">
         <div class="title">
-            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http:://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                 <ol class="breadcrum">
                     <router-link class="breadcrumb-item" to="/"><a href="#">Trang chủ</a></router-link>
                     <router-link class="breadcrumb-item" to="/details/:id"><a href="#">Chi tiết sản phẩm</a></router-link>
@@ -195,7 +195,7 @@
                     <li><span class="at"> Ngày đi: </span>  <span class="as">{{detailproduct.startdate}} </span></li>
                     <li><span class="at">Ngày về: </span>  <span class="as">{{detailproduct.enddate}}</span></li>
                     <li><span class="at"> Giá cũ:</span> <span class="as"> <del>{{Intl.NumberFormat('de-DE',{style: 'currency',currency: 'VND'}).format(detailproduct.price)}}</del></span> </li>
-                    <li> <span class="at">Giá mới: </span>  <span class="as as1"> {{Intl.NumberFormat('de-DE',{style: 'currency',currency: 'VND'}).format(detailproduct.price)}}</span></li>
+                    <li> <span class="at">Giá mới: </span>  <span class="as as1"> {{Intl.NumberFormat('de-DE',{style: 'currency',currency: 'VND'}).format(detailproduct.saleprice)}}</span></li>
                      <li> <span class="at">Số tour còn: </span>  <span class="as"> {{detailproduct.empty}}</span></li>
                      <li>
                         <span class="at" style="width:130px">Số lượng:</span> <span class="as" style="margin-left:50px;"> <input id="quantity" name="quantity" type="number" v-model="sub_quantity" style="width:30px"/></span>
