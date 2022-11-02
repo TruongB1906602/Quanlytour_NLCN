@@ -1,6 +1,5 @@
 import {createRouter,createWebHistory } from "vue-router";
 import ShopView from "@/views/ShopView.vue";
-import Cart from '@/views/CartShop.vue';
 import Addpay from '@/views/Addpay.vue';
 const routes = [
     {
@@ -79,8 +78,8 @@ const routes = [
       
       {
             path: "/Cart",
-            name: "Cart",
-            component: Cart,
+            name: "CartShop",
+            component: () => import("@/views/CartShop.vue"),
      },
      {
         path: "/Cart/addpay",
