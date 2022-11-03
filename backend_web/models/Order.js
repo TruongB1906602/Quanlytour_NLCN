@@ -15,16 +15,12 @@ const OrderSchema = new mongoose.Schema(
     address: { type: String, required: true },
     title: { type: String, required: true },
     startdate: { type: String },
-    
     email: { type: String, required: true },
     name: { type: String, required: true },
     price: { type: Number, required: true },
     nametourguide: { type: String},
     childprice: { type: Number, required: true },
     adultquantity: { type: Number, required: true },
-
-    
-     
      status: { type: String, default: "Đang xử lý..." },
   },
   { timestamps: true }

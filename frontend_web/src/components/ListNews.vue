@@ -61,15 +61,7 @@
                
             </div>
 
-            <div class=" row-cols-1" >
-             <h4 class="heading">Địa điểm</h4>
-            <div  class="destination" v-for="new1 in news"
-                :key="new1._id"
-               
-            >
-                <span>{{new1.destination}}</span></div>
-               
-            </div>
+         
             <div class=" row-cols-1" >
                  <h4 class="heading">Ảnh</h4>
                 <div  class="images" v-for="new1 in news"
@@ -111,7 +103,6 @@
     </div>
      </template>
     <style scoped>
-
      .title:hover{
           background-color: #0d6efd;
             color: azure;
@@ -133,20 +124,10 @@
         font-size: 12px;
         padding: 20px;
          border: 1px solid #dee2e6;
-            background: white;
+        background: white;
           
     }
-   
-    .destination{
-         border: 1px solid #dee2e6;
-        height: 80px;
-        font-size: 14px;
-        font-weight: 500;
-        padding: 10px;
-        background: white;
-        
-    
-    } 
+
     .images{
          border: 1px solid #dee2e6;
         height: 80px;

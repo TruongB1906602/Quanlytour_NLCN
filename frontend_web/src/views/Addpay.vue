@@ -5,18 +5,18 @@
   import toastjs from "../assets/js/toasts";
   import toastsVue from "../components/toasts.vue";
   import PayService from "../services/Pay.service";
+  import NewsService from "../services/News.service";
   import Cartshopdetails from "@/views/Cartshopdetails.vue";
   import HeaderShop from '@/components/HeaderShop.vue';
+ 
   import Paymentform1 from "../components/Paymentform1.vue";
 
   export default {
-    props:{
-
-    },
+   
     data(){
-     
-      return {
     
+      return {
+        news:[],
            toasts:{
                 title:"Success",
                 msg:"Đặt hàng thành công!",
@@ -31,6 +31,7 @@
       Paymentform1,
       toastsVue,
       Cartshopdetails,
+
       
   },
   
@@ -70,26 +71,45 @@
                       this.toastjs();
                   }
            },  
+           async getnews() {
+              try {
+                 this.news=  await NewsService.getAll();
+
+              }catch(error) {
+                  console.log(error);
+                      this.toasts.title = "Warning",
+                      this.toasts.msg="Tài khoản không phải ADMIN",
+                      this.toasts.type = "warn",
+                      this.toasts.duration=2000
+                      this.toastjs();
+                  }
+           },  
 
 
     },
+    mounted(){
+      this.getnews();
+    }
    
   
   };
   </script>
   <template>
   <div style="color: #1A202C; width: 100%;
-      background: #EDF2F7;">
+      background: #EDF2F7; ">
   <HeaderShop/>
-  <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+  
+  <toastsVue></toastsVue>
+  <nav  class="nav-breadcum" style="--bs-breadcrumb-divider: 
+  url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                   <ol class="breadcrum">
                       <router-link class="breadcrumb-item" to="/"><a href="#">Trang chủ</a></router-link>
-                    
-                         <router-link class="breadcrumb-item" to="/addpay"><a href="#">Thanh toán</a></router-link>
+                      <router-link class="breadcrumb-item" to="/addpay"><a href="#">Thanh toán</a></router-link>
                   </ol>
-              </nav>
-  <toastsVue></toastsVue>
+     </nav>
+ 
     <div class="page">
+     
         <div class="pays"> 
                     <Paymentform1
                             
@@ -126,6 +146,15 @@
 
 
                       </ul>
+                      <h3>Tin Tức mới</h3>
+                      <ul>
+                        <li v-for=" item in news"> 
+                              <strong> <img :src=item.img[0] style="width: 110px; height:60px; margin: 0px 5px;" alt=""></strong>
+                              <span style="font-size: 13px ; width: 15rem; height: 60px;overflow: hidden;">{{item.title}}</span>
+                           
+                        </li>
+                        </ul>
+
                   </div>
         </div>
 
@@ -158,16 +187,16 @@
           
       }
       .order{
-         
           width:620px;
           margin-left: 20px;
       }
-      .page{
-  
-          background: white;
+  .page{
+      
+      background: white;
       }
       .pays{
-       margin-left: 12rem;
+    
+       margin-left: 11rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -234,8 +263,11 @@
       }
       .social a{
         display: inline-block;
-        
         height: 16px;
         margin: 0 4px;
+      }
+      .nav-breadcum{
+        margin-top: 4rem;
+      
       }
   </style>

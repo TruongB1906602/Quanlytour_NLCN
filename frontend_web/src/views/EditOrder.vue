@@ -90,7 +90,7 @@
                 }catch(error) {
                     console.log(error);
                         this.toasts.title = "Warning",
-                        this.toasts.msg="Tài khoản không phải ADMIN",
+                        this.toasts.msg="Đã xảy ra lỗi rồi! ",
                         this.toasts.type = "warn",
                         this.toasts.duration=2000
                         this.toastjs();
