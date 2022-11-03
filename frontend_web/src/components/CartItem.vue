@@ -16,6 +16,7 @@ import PayService from '../services/Pay.service';
               type:"",
               duration:0
               },
+             
             }
         },
         props:{
@@ -185,7 +186,7 @@ import PayService from '../services/Pay.service';
          
             <div class="total" >
                 <h5 class="price">Thành tiền</h5><span style="font-size:25px; font-weight:600;">{{Intl.NumberFormat('de-DE',{style: 'currency',currency: 'VND'}).format(total)}} </span>
-                <ul>
+                <ul    v-show="title  == '1'" >
                     <li @click="payment">
                         <input type="radio" id="html" name="fav_language" value="HTML" checked="checked">
                         <label for="html" name="fav_language" value="HTML">Thanh toán chuyển khoản ngân hàng</label>
