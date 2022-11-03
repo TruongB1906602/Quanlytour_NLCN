@@ -3,7 +3,6 @@
 import CartService from '../services/Cart.service';
 import OrderService from '../services/Order.service';
 import { mapState,mapActions } from "pinia";
-
 import { useAuthStore } from "@/stores/Auth.store"
 import toast from '../assets/js/toasts';
 import router from '../router';
@@ -14,10 +13,8 @@ import router from '../router';
      },
  
     data(){
-   
       return{
         order:[],
-       
           carts:[],
              toasts:{
                     title:"Warning",
@@ -82,10 +79,14 @@ import router from '../router';
           } else if( this.getlengthcarts ==0 ){
             this.$router.push("/Cart"); 
           } 
-          else{
+          else {
             for(var i in this.order){
-                  if(this.currentUser && this.order[i] != null){
+              console.log(this.order[i].userId);
+                  if(this.order[i].userId == this.currentUser._id){
                     this.$router.push("/Success"); 
+                  }
+                  else{
+                    this.$router.push("/Cart"); 
                   }
                 
                 

@@ -11,7 +11,7 @@ import PayService from '../services/Pay.service';
                 products:[],
                 detailproduct:[],
                 toasts:{
-              title:"",
+              title:"1",
               msg:"",
               type:"",
               duration:0
@@ -31,7 +31,6 @@ import PayService from '../services/Pay.service';
             toastsVue,
         },
         methods:{
-
             async registerproduct(){
         try{
           this.pays =  await PayService.get(this.$route.params.id);
@@ -119,8 +118,6 @@ import PayService from '../services/Pay.service';
       :key="item._id"
 
       >
-           
-     
           <div class="col-md-2 col-lg-2 col-xl-2">
             <img :src="item.img"
                 class="img-fluid rounded-3" alt="">
@@ -130,14 +127,10 @@ import PayService from '../services/Pay.service';
                     <p class="text"><img src="https://cdn-icons-png.flaticon.com/512/8346/8346762.png" alt="">{{item.title}}</p>
                  </div>
                     <div>
-                       
                          <p class="text"><img src="https://cdn-icons-png.flaticon.com/512/919/919790.png" alt="">Giá: <span style="font-size: 14px; color:black">{{  Intl.NumberFormat('de-DE',{style: 'currency',currency: 'VND'}).format(item.price) }}/người </span></p>  
-                        
                         <p class="text"><img src="https://cdn-icons-png.flaticon.com/512/3127/3127363.png" alt="">Số chổ còn: <span style="font-size: 14px; color:black">{{item.empty}}</span></p> 
                         
-                     
-
-                      </div>
+                     </div>
             </div>
 
             
@@ -165,7 +158,7 @@ import PayService from '../services/Pay.service';
             </div>
          </div>
          <div class="container" 
-         v-if="item.childquantity !=0  || item.adultquantity != 0  ">
+         v-if="this.title=='1'  ">
             <h4 class="quote">Bảng giá</h4>
             <div class="row">
                 <div class="col title" >Loại khách</div>
