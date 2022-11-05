@@ -1,4 +1,5 @@
 <script>
+
     import UserService from "../services/User.service";
     import toastjs from "../assets/js/toasts";
     import { swalert } from "@/mixins/swal.mixin";
@@ -39,7 +40,7 @@
                                 await UserService.delete(id);
                                 setTimeout(()=>{
                                    location.reload();
-                                 },2000);
+                                 },1000);
                             } catch (error) {
                                 console.log(error);
                             }
@@ -74,7 +75,7 @@
     
          <div class=" row-cols-1">
            <h4 class="heading" >Email</h4>
-           <div class="title" v-for="user in users"  
+           <div class="email" v-for="user in users"  
                 :key="user._id"
                
            >
@@ -86,7 +87,7 @@
       
          <div class="row-cols-1">
            <h4 class="heading " >Chức năng</h4>
-           <div class="title user-item" 
+           <div class="btn list-group-item user-item d-flex"
                  v-for="user in users"  
                 :key="user._id"
     
@@ -96,7 +97,7 @@
                 <button  class=" btn-outline-danger btn-sm" @click="deluser(user._id)"><ion-icon name="close-circle-outline"></ion-icon>
                 </button>
              
-             
+                
                  <button   class=" btn-outline-danger btn-sm" >
                  <router-link
                                         :to="{
@@ -106,9 +107,8 @@
                                         >
                                         
                                         <ion-icon name="create-outline"></ion-icon>
-                
-                                           
-                                     </router-link>
+                   
+                </router-link>
                 
                 </button> 
                
@@ -151,7 +151,8 @@
     }
     .btn{
         font-weight: 500;
-       
+         width:  120px;
+        height: 65px;
         padding: 15px;
         border: 1px solid #dee2e6;
         background: white;
@@ -175,13 +176,24 @@
     
     .title{
         border: 1px solid #dee2e6;
-        height: 55px;
+        height: 65px;
          font-size: 14px;
         font-weight: 500;
         padding: 15px;
+        width: 14rem;
         overflow: hidden;
         background: white;
        
+    }
+    .email{
+        border: 1px solid #dee2e6;
+        height: 65px;
+         font-size: 14px;
+        font-weight: 500;
+        padding: 15px;
+      
+        overflow: hidden;
+        background: white;
     }
     
     .container{

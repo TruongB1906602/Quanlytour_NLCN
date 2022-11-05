@@ -26,9 +26,8 @@
             .required("Email phải có giá trị.")
             .email("E-mail không đúng.")
             .max(50, "E-mail tối đa 50 ký tự."),
-            tourquantity: yup
-             .string(),
-            Tourguide: yup
+          
+            TourguideID: yup
              .string(),
         
             });
@@ -62,176 +61,150 @@
 </script>
 
 <template>
-  <div>
+  <div class="container">
        
-<toastsVue></toastsVue>
+    <toastsVue></toastsVue>
 
-<div class="login-form-container" >
-     <router-link to="/">
-      <ion-icon name="close-circle-outline" id="form-close"></ion-icon>
-     </router-link>
 
-    <Form action="" :validation-schema="Userform" @submit="submitproduct">
-        <h3>Sửa thông tin</h3>
-          <label class="form-label" for="name">Tên người dùng</label>
-         <Field 
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Nhập vào tên"
-            v-model="userLocal.username"
-                       class="box"
-            />
-             <ErrorMessage name="name" class="text-danger"/> 
-             <label class="form-label" for="email">Email</label>
-            <Field 
-                       id="email"
-                        name="email"
-                        type="email"
-                         placeholder="Nhập vào email"
-                        v-model="userLocal.email"
-                       class="box"
-            />
-            <ErrorMessage name="email" class="text-danger"/>
-          <div  v-if="user.Tourguide==true">
-            <label class="form-label" for="email">Số tour nhận</label>
-            <Field 
-               
-                        id="tourquantity"
-                        name="tourquantity"
-                        type="number"
-                        placeholder="Nhập vào số tour đảm nhận"
-                        v-model="userLocal.tourquantity"
-                       class="box"
-            /> 
-          
-          </div>
+ <div class="wrapper">
+ 
+      <Form :validation-schema="Userform"  @submit="submituser" >
+       <h4>Thông tin hướng dẫn viên</h4>
+      <div class="left">
+      
          
-             <label class="form-label" for="email">Tourguide</label>
+       <div class="form-group">
+         <label for="nameproduct">Tên </label>
+         <Field type="text" class="form-control" id="email" name="name" placeholder="Nhập vào họ tên" v-model="userLocal.username" />
+         <ErrorMessage name="name" class="text-danger"  />
+       </div>
+   
+       <div class="form-group">
+         <label for="email">Email</label>
+         <Field type="text" class="form-control" id="email" name="email" placeholder="Nhập vào địa chỉ" v-model="userLocal.email" />
+         <ErrorMessage name="email" class="text-danger"  />
+       </div>
+      
+      
+ 
+       </div>
+       <div  class="form-group">
+        <label class="form-label" for="email">TourguideId</label>
             <Field 
                        id="Tourguide"
                         name="Tourguide"
                         type="Tourguide"
                          placeholder="Nhập vào Tourguide"
-                        v-model="userLocal.Tourguide"
-                       class="box"
+                        v-model="userLocal.roleId"
+                       class="form-control"
             />
           
-        
-            <div class="btn-main">
-              <input type="submit" class="btn btn-primary" value="Lưu" />
-              <router-link to="/admin" style="margin: 10px">
-                <span>Trở về</span>
-              </router-link>
-           </div>
-             
-           
-              
-    </Form>
-
-</div>
-  </div>
-</template>
-<style scoped>
+          
+          </div>
     
-.login-form-container{
-   left: 0;
-  z-index: 10;
-  /* background:rgba(0,0,0,.7); */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.login-form-container.active{
-  top:0;
-}
-.mt-4 {
-    margin-top: 0.5rem!important;
-}
-.login-form-container Form{
-    margin: 2rem;
-    /* padding: 1.5rem 2rem; */
-    border-radius: 0.5rem;
-    background: #fff;
-    width: 30rem;
-    height: 25rem;
-}
-
-.login-form-container Form h3{
-  font-size: 2rem;
-  color:#444;
-
-  text-align: center;
-  padding:1rem 0;
-}
-
-.login-form-container Form .box{
-  width:100%;
-  padding:0.3rem;
-  font-size:0.8rem;
-  color:#333;
-  margin:.6rem 0;
-  border:.1rem solid rgba(0,0,0,.3);
-  text-transform: none;
-}
-
-.login-form-container Form .box:focus{
-  border-color:  #ffa500;
-}
-
-.login-form-container Form #remember{
-  margin:2rem 0;
-}
-
-.login-form-container Form label{
-  font-size: 1rem;
-}
-
-.login-form-container Form .btn{
-  display: inline-block;
-  width:100%;
-}
-
-.login-form-container Form p{
+         
+           <div class="btn-main">
+               <input type="submit" class="btn btn-primary" value="Lưu" />
+               <router-link to="/admin" style="margin: 10px">
+                  <button class="btn btn-danger">Trở về</button>
+               </router-link>
+            </div>
+      
+     </Form>
+   
+   
+ </div>
  
-  font-size: 1rem;
-  color:#666;
-}
+  </div>
+ </template>
+ <style scoped>
+   .container{
+    display: flex;
+    justify-content: center;
+   }
+ .wrapper{
+     width: 550px;
+     border-radius: 8px;
+     padding: 22px;
+    background: #ffffff;
+    box-shadow: 0px 12px 12px rgb(0 0 0 / 3%);
+    border-radius: 16px;
+    background: white;
 
-.login-form-container Form p a{
-  color: #ffa500;
-}
+ }
+ .right{
+  
+    width: 600px;
+    display: inline-block;
+ }
+ label{
+   margin-bottom: 5px;
+ }
+ #Tourguide{
+      width: 500px;
+ }
+ #othersproduct{
+    width: 400px;
+    height: 50px;
+    display: inline-block;
+    
+   border: 1px solid grey;
+ }
+ h4{
+      font-size: 18px;
+       font-weight: 600;
+       line-height: 21px;
+      
+       font-weight: 600;
+       margin-bottom: 15px;
+       color:#333;
+      
+       padding-bottom: 7px;
+ }
+ .left{
+    
+  margin-right: 30px;
+   width:500px;
+   display: inline-block;
+ 
+ }
+ .btnsave{
+  
+     border-radius: 4px;
+     font-weight: 500;
+     
+     width:50px; 
+     height: 42px;
+     text-align: center;
+     cursor: pointer;
+     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+     background: #338dbc;
+     color: white;
+ }
+ 
+ .form-control{
+    font: inherit;
+     color: currentColor;
+    border-bottom: none;
+     height: 1.1876em;
+     margin: 0;
+     display: block;
+     padding: 6px 0 7px;
+    
+     background: none;
+     box-sizing: content-box;
+     animation-name: mui-auto-fill-cancel;
+     letter-spacing: inherit;
+     animation-duration: 10ms;
+     margin-bottom: 15px;
+     border-bottom: 1px solid grey;
+ 
+ }
+ 
 
-.login-form-container Form p a:hover{
-  color: grey;
-  text-decoration: underline;
-}
-
-.login-form-container #form-close{
-  position: absolute;
-  top:2rem; right:3rem;
-  font-size: 5rem;
-  color:#fff;
-  cursor: pointer;
-}
-
-
-.btn {
-    display: block;
-    margin-top: 0.5rem;
-    background: #ffa500;
-    color: #fff;
-    padding: 0.3rem 3rem;
-    border: 0.2rem solid;
-    cursor: pointer;
-    font-size: 1.2rem;
-}
-</style>
-
-
-
-
-
-
+ .btn_img-add{
+  font-size: 30px; 
+  color: dodgerblue;
+ }
+ 
+ </style>

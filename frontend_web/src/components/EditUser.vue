@@ -2,12 +2,6 @@
   <div>
     <toastsVue></toastsVue>
     
-    
-              
-
-    <!-- <div class="home">
-      <Modal @close="toggleModal" :modalActive="modalActive"> -->
-        <!-- <div class="modal-content"> -->
             <div v-if="user" class="userform">
                     
                     <Userform
@@ -15,12 +9,7 @@
                     @submit:user="updateuserindex"
                 />
                 </div>
-        <!-- </div>
-      </Modal> -->
-      <!-- <button @click="toggleModal" type="button">Open Modal</button>
-    </div>
-         -->
-                    
+        
    
       </div>
   </template>

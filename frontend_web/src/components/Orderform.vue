@@ -1,10 +1,10 @@
 <script>
     import * as yup from "yup";
     import { Form, Field, ErrorMessage } from "vee-validate";
-  import toastsVue from '../components/toasts.vue'
-  import toastsjs from '../assets/js/toasts.js'
-  import { mapState } from 'pinia'
-    import { useAuthStore } from "@/stores/Auth.store";
+    import toastsVue from '../components/toasts.vue'
+    import toastsjs from '../assets/js/toasts.js'
+    import { mapState } from 'pinia'
+      import { useAuthStore } from "@/stores/Auth.store";
     export default{
         props:{
         
@@ -82,9 +82,7 @@
       },
       emits:['submit:order'],
         methods:{
-          
-           
-               
+        
              toastsjs,
             submitorder(){
               this.orderdetails.status="Đã thanh toán"
@@ -140,8 +138,8 @@
 
     <div class="col">
       <div class="form-group">
-          <label for="phoneproduct">Hướng dẫn viên</label>
-          <Field type="text" class="form-control" id="nameproduct" name="nametourguide"  placeholder="Nhập vào tên hướng dẫn viên" v-model="orderdetails.nametourguide"/>
+          <label for="phoneproduct">Id hướng dẫn viên</label>
+          <Field type="text" class="form-control" id="nameproduct" name="nametourguide"  placeholder="Nhập vào Id hướng dẫn viên" v-model="orderdetails.tourguideId"/>
           <ErrorMessage name="quantity" class="text-danger" />
     </div>
     </div>

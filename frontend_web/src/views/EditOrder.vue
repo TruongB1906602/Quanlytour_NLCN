@@ -8,7 +8,6 @@
             <Orderform
                      class="orderform"
                      :order="order"
-
                      @submit:order="updateOrder"
            />
                 <div class="row" 
