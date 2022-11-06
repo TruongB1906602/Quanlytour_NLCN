@@ -3,6 +3,7 @@
     import UserService from "../services/User.service";
     import toastjs from "../assets/js/toasts";
     import { swalert } from "@/mixins/swal.mixin";
+    import EditUser from "@/components/EditUser.vue";
   
         export default{
             data(){
@@ -14,6 +15,7 @@
                         duration:0
                      },
                      user1: null,
+                     showModal: false
                 }
             },   
           
@@ -23,14 +25,15 @@
                 activeUser: { type: Number, default: -1 },
             },
             emits:['update:activeUser'],
+            components:{
+                        EditUser,
+            },
             methods:{
                 toastjs,
                 async deluser(id){
                     swalert
                     .fire({
-                        title: "Xóa hướng dẫn viên",
-                        icon: "Warning",
-                        text: "Bạn có muốn xóa hướng dẫn viên?",
+                
                         showCloseButton: true,
                         showCancelButton: true,
                     })
@@ -53,14 +56,36 @@
                 updateuserindex(index){
                     this.$emit("update:activeUser",index)
                 },
-            
+
+              
             },
           
         }
     </script>
     <template>
+         <div id="app" class="modal-vue">
+                        
+                        <!-- button show -->
+                        <button @click="showModal = true">show</button>
+                        
+                        <!-- overlay -->
+                        <div class="overlay" v-if="showModal" @click="showModal = false">
+                       
+                        </div>
+                        
+                        <!-- modal -->
+                        <div class="modal" v-if="showModal">
+                            <button class="close" @click="showModal = false">x</button>
+                            <h3>Title</h3>
+                            <p>Description</p>
+                            <EditUser></EditUser>
+                        
+                        </div>
+                        
+                        </div>
 
         <div class="container " > 
+                                   
          <div class=" row-cols-1">
            <h4 class="heading" >Tên người dùng</h4>
            <div class="title user-item" v-for="user in users"  
@@ -97,7 +122,7 @@
                 <button  class=" btn-outline-danger btn-sm" @click="deluser(user._id)"><ion-icon name="close-circle-outline"></ion-icon>
                 </button>
              
-                
+       
                  <button   class=" btn-outline-danger btn-sm" >
                  <router-link
                                         :to="{
@@ -200,5 +225,29 @@
        display: flex;
        max-width: 100%;
     }
-    
+    .modal-vue .overlay {
+        position: fixed;
+        z-index: 9998;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .5);
+}
+
+.modal-vue .modal {
+ 
+  width: 400px;
+  z-index: 9999;
+  margin: 0 auto;
+  height: 400px;
+  padding: 20px 30px;
+  background-color: #fff;
+}
+
+.modal-vue .close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
     </style>

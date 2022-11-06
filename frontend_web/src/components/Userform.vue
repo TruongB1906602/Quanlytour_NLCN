@@ -27,7 +27,7 @@
             .email("E-mail không đúng.")
             .max(50, "E-mail tối đa 50 ký tự."),
           
-            TourguideID: yup
+            roleId: yup
              .string(),
         
             });
@@ -47,7 +47,7 @@
         emits:['submit:user'],
         methods:{
           toast,
-          submitproduct() {
+          submituser() {
         
            this.$emit('submit:user', this.userLocal);
           //  window.location.href = 'http://localhost:8001/admin';
@@ -69,12 +69,12 @@
  <div class="wrapper">
  
       <Form :validation-schema="Userform"  @submit="submituser" >
-       <h4>Thông tin hướng dẫn viên</h4>
+       <h4>Thông tin người dùng</h4>
       <div class="left">
       
          
        <div class="form-group">
-         <label for="nameproduct">Tên </label>
+         <label for="nameproduct">Tên người dùng</label>
          <Field type="text" class="form-control" id="email" name="name" placeholder="Nhập vào họ tên" v-model="userLocal.username" />
          <ErrorMessage name="name" class="text-danger"  />
        </div>
@@ -89,12 +89,12 @@
  
        </div>
        <div  class="form-group">
-        <label class="form-label" for="email">TourguideId</label>
+        <label class="form-label" for="email">Id người dùng</label>
             <Field 
                        id="Tourguide"
                         name="Tourguide"
                         type="Tourguide"
-                         placeholder="Nhập vào Tourguide"
+                         placeholder="Nhập vào Id người dùng"
                         v-model="userLocal.roleId"
                        class="form-control"
             />
@@ -121,6 +121,7 @@
    .container{
     display: flex;
     justify-content: center;
+    margin-top: 3rem;
    }
  .wrapper{
      width: 550px;
