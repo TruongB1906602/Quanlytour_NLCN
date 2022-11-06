@@ -92,7 +92,10 @@
                        adultquantity:"",
                        childprice:"",
                        childquantity:"",
-                       startdate:""
+                       startdate:"",
+                       img:"",
+                       methods:"",
+
                      
                        
                     
@@ -183,6 +186,20 @@
                      
                 }     
         },
+        async payment(){
+                    document.querySelector('.payment-box1').style.display='block'
+                    document.querySelector('.payment-box2').style.display='none'
+                    this.orderitem.methods= document.querySelector('.methods1').innerHTML
+
+                    console.log(this.orderitem.methods);
+           
+        },
+             async payment1(){
+                  document.querySelector('.payment-box2').style.display='block'
+                  document.querySelector('.payment-box1').style.display='none'
+                  this.orderitem.methods= document.querySelector('.methods2').innerHTML
+                  console.log(this.orderitem.methods);
+        },
            
                toastsjs,
                async getidcart() {
@@ -193,7 +210,7 @@
         
                        for(var i in this.cartItem){
                           console.log(this.cartItem[i].adultquantity + this.cartItem[i].childquantity )
-                               quantity1 = this.cartItem[i].adultquantity + this.cartItem[i].childquantity 
+                            quantity1 = this.cartItem[i].adultquantity + this.cartItem[i].childquantity 
                            this.orderitem.price = this.cartItem[i].price;
                            this.orderitem.title = this.cartItem[i].title;
                            this.orderitem.quantity = this.cartItem[i].quantity;
@@ -201,6 +218,7 @@
                            this.orderitem.adultquantity = this.cartItem[i].adultquantity;
                            this.orderitem.childprice = this.cartItem[i].childprice;
                            this.orderitem.startdate = this.cartItem[i].startdate;
+                           this.orderitem.img = this.cartItem[i].img;
                          
                         for(var j in this.products){
                           if(this.products[j]._id == this.cartItem[i].productId){
@@ -226,6 +244,7 @@
               
                   
                },
+              
            
         },
         created(){
@@ -300,6 +319,37 @@
                    <hr class="my-4">
                    <CartItem v-bind:title="title"  :refeshlistcart="refeshlistcart" :carts="carts" @deleted:cartIndex="delcart"></CartItem>
                 
+                  <div class="methods">
+
+
+
+                    <ul    v-show="title  == '1'" >
+                    <li @click="payment">
+                        <input type="radio" id="html" name="fav_language" value="HTML" >
+                        <label for="html" name="fav_language" value="HTML">Thanh toán chuyển khoản ngân hàng</label>
+                        <div  class="payment-box1" style="display:block;">
+                                    <p  class="methods1">
+                                        Thực hiện thanh toán chuyển khoản ngay vào tài khoản ngân hàng của chúng tôi. Đơn hàng sẽ chuyển giao sau khi tiền đã chuyển tiền thành công.
+                                    </p>
+                        </div>
+                    </li>
+                    <li @click="payment1">
+                        <input type="radio" id="css" name="fav_language" value="CSS">
+                        <label for="css">Trả tiền mặt khi nhận PHIẾU SỬ DỤNG</label>
+                        <div class="payment-box2" style="display:none;">
+                                    <p class=" methods2">
+                                    Trả tiền mặt khi giao hàng, Du lịch Travel Việt sẽ gửi đến bạn phiếu xác nhận đặt tour, chúng tôi sẽ thu phí nhỏ thôi!.
+                                    </p>
+                        </div>
+                    </li>
+                    
+                </ul>
+                  </div>
+
+
+
+
+
                    <div class="btn"  @click="getidcart()">
                              <button  type="submit" 
                   
@@ -334,7 +384,7 @@
   <style scoped>
   .wrapper{
  
-      
+      margin-bottom: 30rem;
       border-radius: 8px;
       display: flex;
       justify-content: center;
@@ -435,5 +485,63 @@
   .py-5 {
     padding-top: 1rem!important;
     padding-bottom: 1rem!important;
+}
+ul li{
+    line-height: 2;
+    text-align: left;
+    margin: 0;
+    font-weight: 400;
+    list-style: none;
+    padding: 0 10px;
+   }
+   ul{
+    text-align: left;
+    padding: 1em;
+    border-bottom: 1px solid #dff9e2ea;
+    margin: 0;
+    background: #f5fbfb;
+    list-style: none outside;
+   }
+   ul li label{
+    margin: 0 10px;
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+   }
+   .payment-box1, .payment-box2{
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5em 0;
+    font-size: .92em;
+    border-radius: 2px;
+    line-height: 1.5;
+    background-color: #dfdcde;
+    color: #515151;
+   }
+   .payment-box1::before {
+    content: "";
+    display: block;
+    border: 1em solid #dfdcde;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    position: absolute;
+    top: -0.75em;
+    left: 0;
+    margin: -1em 0 0 2em;
+}
+.payment-box2 ::before {
+    content: "";
+    display: block;
+    border: 1em solid #dfdcde;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    position: absolute;
+    top: -0.75em;
+    left: 0;
+    margin: -1em 0 0 2em;
 }
   </style>

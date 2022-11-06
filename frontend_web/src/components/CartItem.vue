@@ -76,15 +76,7 @@ import PayService from '../services/Pay.service';
           
             
         },
-       async payment(){
-            document.querySelector('.payment-box1').style.display='block'
-            document.querySelector('.payment-box2').style.display='none'
-           
-        },
-        async payment1(){
-            document.querySelector('.payment-box2').style.display='block'
-            document.querySelector('.payment-box1').style.display='none'
-        }
+      
         
        
     },
@@ -179,7 +171,7 @@ import PayService from '../services/Pay.service';
          
             <div class="total" >
                 <h5 class="price">Thành tiền</h5><span style="font-size:25px; font-weight:600;">{{Intl.NumberFormat('de-DE',{style: 'currency',currency: 'VND'}).format(total)}} </span>
-                <ul    v-show="title  == '1'" >
+                <!-- <ul    v-show="title  == '1'" >
                     <li @click="payment">
                         <input type="radio" id="html" name="fav_language" value="HTML" checked="checked">
                         <label for="html" name="fav_language" value="HTML">Thanh toán chuyển khoản ngân hàng</label>
@@ -199,7 +191,7 @@ import PayService from '../services/Pay.service';
                         </div>
                     </li>
                     
-                </ul>
+                </ul> -->
                   
             </div> 
             
@@ -286,62 +278,6 @@ import PayService from '../services/Pay.service';
    h6{
     width: 300px;
    }
-   ul li{
-    line-height: 2;
-    text-align: left;
-    margin: 0;
-    font-weight: 400;
-    list-style: none;
-    padding: 0 10px;
-   }
-   ul{
-    text-align: left;
-    padding: 1em;
-    border-bottom: 1px solid #dff9e2ea;
-    margin: 0;
-    background: #f5fbfb;
-    list-style: none outside;
-   }
-   ul li label{
-    margin: 0 10px;
-    font-family: sans-serif;
-    font-weight: 500;
-    font-size: 15px;
-   }
-   .payment-box1, .payment-box2{
-    position: relative;
-    box-sizing: border-box;
-    width: 100%;
-    padding: 0.5rem;
-    margin: 0.5em 0;
-    font-size: .92em;
-    border-radius: 2px;
-    line-height: 1.5;
-    background-color: #dfdcde;
-    color: #515151;
-   }
-   .payment-box1::before {
-    content: "";
-    display: block;
-    border: 1em solid #dfdcde;
-    border-right-color: transparent;
-    border-left-color: transparent;
-    border-top-color: transparent;
-    position: absolute;
-    top: -0.75em;
-    left: 0;
-    margin: -1em 0 0 2em;
-}
-.payment-box2 ::before {
-    content: "";
-    display: block;
-    border: 1em solid #dfdcde;
-    border-right-color: transparent;
-    border-left-color: transparent;
-    border-top-color: transparent;
-    position: absolute;
-    top: -0.75em;
-    left: 0;
-    margin: -1em 0 0 2em;
-}
+  
+   
 </style>
