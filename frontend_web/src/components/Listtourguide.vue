@@ -59,7 +59,7 @@
        <h4 class="heading" >Tên hướng dẫn viên</h4>
        <div class="title user-item" v-for="user in users"  
             :key="user._id"
-           v-show="user.Tourguide==true"
+           v-show="user.roleId=='633e86a728363580b5601f86'"
        >
            <span >{{ user.username}}</span>
           
@@ -71,31 +71,31 @@
        <h4 class="heading" >Email</h4>
        <div class="title" v-for="user in users"  
             :key="user._id"
-            v-show="user.Tourguide==true"
+            v-show="user.roleId=='633e86a728363580b5601f86'"
        >
            <span  >{{user.email}}</span>
           
         </div>
           
      </div>
-     <div class=" row-cols-1">
+     <!-- <div class=" row-cols-1">
        <h4 class="heading" >Số tour phụ trách</h4>
        <div class="title" v-for="user in users"  
             :key="user._id"
-            v-show="user.Tourguide==true"
+            v-show="user.roleId=='633e86a728363580b5601f86'"
        >
            <span  >{{user.tourquantity}}</span>
           
         </div>
           
-     </div> 
+     </div>  -->
    
      <div class="row-cols-1">
        <h4 class="heading " >Chức năng</h4>
        <div class="title user-item" 
        v-for="user in users"  
             :key="user._id"
-            v-show="user.Tourguide==true"
+            v-show="user.roleId=='633e86a728363580b5601f86'"
             @click="updateuserindex(index)"
        >
       

@@ -15,12 +15,11 @@
   </template>
   
   <script>
+
   import toastjs from "../assets/js/toasts";
   import toastsVue from "../components/toasts.vue";
   import UserService from "../services/User.service";
   import OrderService from "../services/Order.service";
-  import HeaderShop from "../components/HeaderShop.vue";
-  import Modal from "@/components/Modal.vue";
   import { ref } from "vue";
   import Userform from "../components/Userform.vue";
   export default {
@@ -40,10 +39,10 @@
       }
     },
       components: {
-          // HeaderShop,
+    
           Userform,
           toastsVue,
-          Modal,
+  
       },
       methods: {
       toastjs,
@@ -92,13 +91,7 @@
                   }
               },  
       },
-      setup() {
-      const modalActive = ref(false);
-      const toggleModal = () => {
-        modalActive.value = !modalActive.value;
-      };
-      return { modalActive, toggleModal };
-    },
+   
 
       created(){
         this.getorder()

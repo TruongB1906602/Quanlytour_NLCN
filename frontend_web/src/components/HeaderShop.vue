@@ -23,6 +23,7 @@ import router from '../router';
                     type:"warn",
                     duration:3000
             },
+          
       }
     },
     computed: {
@@ -189,8 +190,9 @@ import router from '../router';
       
 
         <div class="User">
+
           <div class="not-login">
-         
+           
               <div class="collapse user_link" id="user">
                 <div class="card1 bg-white connect-shop">
                   <router-link to="/login" ><button class="text-white">Đăng nhập</button> </router-link>
@@ -556,4 +558,5 @@ ul.navbar-nav {
       transform: translateY(0%);
   }
 }
+
 </style>
