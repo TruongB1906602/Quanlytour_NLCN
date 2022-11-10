@@ -1,18 +1,20 @@
 <script>
 
 import TourguideService from '../services/Tourguide.service';
+import ProductService from '../services/Product.service';
 import toastsVue from '../components/toasts.vue';
 import { mapState } from 'pinia';
 import { useAuthStore } from '@/stores/Auth.store';
-import HeaderShop from '@/components/HeaderShop.vue';
 import toast from '../assets/js/toasts';
-
+import HeaderShop from '@/components/HeaderShop.vue'
 
 export default {
    data() {
       return {
          users: [],
          orders: [],
+        products:[],
+   
          activeUser: -1,
          activeIndexOrder: -1,
          toasts: {
@@ -22,10 +24,9 @@ export default {
             duration: 2000,
          },
          tourguideId: '',
-         search:'',
+   
       };
    },
- 
    computed: {
       getindexorder() {
          if (this.activeIndexOrder != -1) {
@@ -52,7 +53,6 @@ export default {
       ...mapState(useAuthStore, {
          currentUser: 'user',
       }),
-    
    },
    components: {
       toastsVue,
@@ -60,7 +60,7 @@ export default {
    },
    methods: {
       toast,
-      
+
       async getall() {
          try {
             const data = await TourguideService.getAll();
@@ -68,80 +68,83 @@ export default {
             const user = JSON.parse(localStorage.getItem('user'));
             this.tourguideId = user._id;
             console.log(this.tourguideId);
-            console.log(this.orders);
+          
+        
          } catch (error) {
             this.toast();
             setTimeout(() => {
                this.$router.push({ name: 'ShopMain' });
             }, 1000);
          }
-      },
-     filteredList() {
-      return this.orders.filter(order => {
-        return order.name.toLowerCase().includes(this.search.toLowerCase())
-      })
-    }
-   },
-   created(){
-      this.getall();
-   }
-}
-</script>
+      },    
 
+
+      async getproduct(){
+                try{
+                 
+                this.products = await ProductService.getAll();
+               
+                }catch(error){
+                    console.log(error);
+                }
+            },
+   },
+
+   created() {
+      this.getall();
+      this.getproduct()
+    
+   },
+};
+</script>
 <template>
    <HeaderShop/>
    <div class="tourguide">
-      <h3>Giao diện quản lý khách hàng của hướng dẫn viên</h3>
+      <h3>Hướng dẫn viên</h3>
      
-   </div>
-   <div class="search-wrapper">
-             <input type="text" v-model="search" placeholder="Tìm kiếm theo tên khách hàng..."/>    
    </div>
 
    <div class="container">
+      <div class="row-cols-1" >
+         <h4 class="heading">Tên tour </h4>
+         <div class="title" 
+   
+         
+         v-for="order in orders" :key="order._id" v-show="order.tourguideId == tourguideId"  >
+              <router-link :to="{
+                name: 'tourguides',
+                params: { id: order._id }
+                    }">     
 
-      <div class="row-cols-1">
-         <h4 class="heading">STT</h4>
-         <div class="title" v-for="(order, index) in   filteredList()"  :key="order._id">
-            <span>{{  index+1 }}</span>
+
+                   <span style="color :black;">{{order.title}}</span>
+                </router-link>  
+                  
+
+               
          </div>
       </div>
 
-
-      <div class="row-cols-1">
-         <h4 class="heading">Tên khách hàng</h4>
-         <div class="name" v-for="order in  filteredList() " :key="order._id" v-show="order.tourguideId == tourguideId">
-            <span>{{ order.name }}</span>
-         </div>
-      </div>
-      <div class="row-cols-1">
-         <h4 class="heading">Địa chỉ</h4>
-         <div class="address" v-for="order in  filteredList() " :key="order._id" v-show="order.tourguideId == tourguideId">
-            <span>{{ order.address }}</span>
-         </div>
-      </div>
       
-   <div class="row-cols-1">
-         <h4 class="heading">Số điện thoại</h4>
-         <div class="phone" v-for="order in   filteredList()" :key="order._id" v-show="order.tourguideId == tourguideId">
-            <span>{{ order.phone }}</span>
+      <div class="row-cols-1">
+         <h4 class="heading">Ngày bắt đầu</h4>
+         <div class="startdate" v-for="order in orders" :key="order._id" v-show="order.tourguideId == tourguideId">
+            <span>{{ order.startdate }}</span>
          </div>
       </div>
+     
+
+     
    </div>
- 
 </template>
 <style scoped>
 .tourguide {
-   
-    text-align:center;
-    margin-bottom: 1rem;
    display: flex;
    justify-content: center;
    align-items: center;
-   margin-top: 5rem;
    margin-bottom: 5rem;
+   margin-top: 5rem;
 }
-
 .title:hover {
    background-color: #0d6efd;
    color: azure;
@@ -152,6 +155,7 @@ export default {
 }
 .btn button {
    font-size: 18px;
+
    border: 1px solid #dee2e6;
    background: #fbe2c5;
    margin: 0 5px;
@@ -163,30 +167,21 @@ export default {
    border: 1px solid #dee2e6;
    background: white;
 }
-.phone {
-   text-align: center;
-   height: 40px;
-
-   font-weight: 500;
-   font-size: 14px;
-   padding: 10px;
-
-   text-align: center;
-   width: 250px;
-}
-.address {
-  text-align: center;
-   height: 40px;
-   font-size: 14px;
-   width: 250px;
-   font-weight: 500;
-   padding: 10px;
-   background: white;
+.startdate {
+    border: 1px solid #dee2e6;
+    height: 50px;
+    font-size: 14px;
+    width: 250px;
+    font-weight: 500;
+    width: 200px; 
+    padding: 10px;
+     background: white;
+    
 }
 .heading {
    cursor: pointer;
    position: relative;
-   text-align: center;
+
    font-size: 16px;
    display: flex;
    justify-content: center;
@@ -197,28 +192,23 @@ export default {
 }
 
 .title {
+    border: 1px solid #dee2e6;
+    height: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+    overflow: hidden;
+    background: white;
+    width: 450px;
 
-  width: 200px;
-  text-align: center;
-   height: 40px;
-   font-size: 14px;
-   font-weight: 500;
-   padding: 10px;
-   overflow: hidden;
-   background: white;
-   text-align: center;
+    
+}
+
+title span{
+   color: rebeccapurple;
 }
 
 
-.name {
-   text-align: center;
-   height: 40px;
-   font-size: 14px;
-   width: 300px;
-   font-weight: 500;
-   padding: 10px;
-   background: white;
-}
 
 .row-cols-1 {
    /* width: 10%; */
@@ -227,20 +217,7 @@ export default {
 .container {
    display: flex;
    justify-content: center;
+   max-width: 100%;
    margin-bottom: 5rem;
 }
-.search-wrapper{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin: 30px auto;
-}
-.search-wrapper input{
-   width: 63rem;
-   height: 40px;
-   padding: 10px;
-
-}
 </style>
-
-

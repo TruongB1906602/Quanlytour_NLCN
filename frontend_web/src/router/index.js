@@ -21,11 +21,7 @@ const routes = [
         name: "Logup",
         component: () => import("@/views/Logup.vue"),
     },
-    {
-        path: "/modalview",
-        name: "modalview",
-        component: () => import("@/views/Modalview.vue"),
-    },
+    
     {
         path: "/orderdetails",
         name: "orderdetails",
@@ -45,6 +41,12 @@ const routes = [
         component:() => import("@/views/DetailsNews.vue"),
         
       }, 
+      {
+        path: "/tourguides/:id",
+        name: "tourguides",
+        component: () => import("@/views/DetailsTourguide.vue"),
+    },
+    
       {
         path: "/Cartshopdetails",
         name: "Cartshopdetails",
@@ -131,11 +133,7 @@ const routes = [
         name: "editnews",
         component: () => import("@/views/EditNew.vue"),
     },
-    {
-        path: "/edittourguide/:id",
-        name: "edittourguide",
-        component: () => import("@/views/Edittourguide.vue"),
-    },
+   
     {
         path: "/edittourguide/:id",
         name: "edittourguide",
@@ -178,6 +176,9 @@ const routes = [
         name: "tourguideview",
         component: () => import("@/views/Tourguideview.vue"),
     },
+    
+    
+
     
     {
         path: "/newsview",
