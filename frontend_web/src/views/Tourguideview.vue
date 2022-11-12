@@ -1,5 +1,4 @@
 <script>
-
 import TourguideService from '../services/Tourguide.service';
 import toastsVue from '../components/toasts.vue';
 import { mapState } from 'pinia';
