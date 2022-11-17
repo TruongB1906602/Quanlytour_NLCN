@@ -2,7 +2,7 @@
 
     import HeaderShop from '@/components/HeaderShop.vue'
     import OrderService from '../services/Order.service'
-
+    import TourguideService from '../services/Tourguide.service'
     import toastsVue from '../components/toasts.vue'
     import toastsjs from '../assets/js/toasts.js'
     import { mapState } from 'pinia'
@@ -15,7 +15,7 @@
             return{
                  detailorders:[],
                  detailorders1:[],
-               
+              
                  toasts:{
                     title:"Success",
                     msg:"Thêm vào giỏ hàng thành công!",
@@ -43,30 +43,35 @@
             async getorder(){
                 try{
                  
-                this.detailorders = await OrderService.get(this.$route.params.id);
+                    this.detailorders = await  TourguideService.get( this.$route.params.id);
+                console.log(this.detailorders);
+                   
                 }catch(error){
                     console.log(error);
                 }
             },
-           
+        
             async getorder1(){
                 try{
                  
-                this.detailorders1 = await OrderService.getAll();
-                const user = JSON.parse(localStorage.getItem('user'));
-                  this.tourguideId = user._id;
-                  console.log(this.tourguideId);
-                  console.log(this.orders);
+                        this.detailorders1 = await OrderService.getAll();
+                        const user = JSON.parse(localStorage.getItem('user'));
+                        this.tourguideId = user._id;
+                        console.log(this.tourguideId);
+                       
                 }catch(error){
                     console.log(error);
                    
                 }
             },
+
+          
         },
           
         created() {
             this.getorder();
             this.getorder1();
+
         },
 
     }
@@ -82,20 +87,25 @@
    </div>
 
    <div class="container">
+
+    
       <div class="row-cols-1">
          <h4 class="heading">Tên khách hàng</h4>
          <div class="title" v-for="order in detailorders1" :key="order._id" 
-         v-show="order.title == detailorders.title && order.tourguideId == tourguideId"
+
+         v-show="order.tourguideId == tourguideId && order.title== tourguide._id"
        
-       
-         >
-          <span>{{order.name}}</span>
-         </div>
+         > 
+
+         <span>{{ order.name}}</span>
+        
+
+      </div> 
       </div>
    
       <div class="row-cols-1">
          <h4 class="heading">Địa chỉ</h4>
-         <div class="startdate" v-for="order in detailorders1" :key="order._id"   v-show="order.title == detailorders.title && order.tourguideId == tourguideId">
+         <div class="startdate" v-for="order in detailorders1" :key="order._id"   v-show="order.tourguideId == tourguideId">
             <span>{{ order.address }}</span>
          </div>
       </div>

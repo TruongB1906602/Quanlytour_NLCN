@@ -1,9 +1,15 @@
 const Order = require('../models/Order');
-
 const User = require('../models/User');
-
 const router = require('express').Router();
+const {
+   verifyToken,
+   verifyTokenAndAuthorization,
+   CheckRoleAdmin,
+   verifyTokenAndTourguide,
+ 
+ } = require("./verifyToken");
 
+ 
 router.post('/', async (req, res) => {
    const newTourguide = new Tourguide(req.body);
    try {
@@ -16,7 +22,7 @@ router.post('/', async (req, res) => {
 });
 
 //UPDATE
-router.put('/:id', async (req, res) => {
+router.put('/:id',async (req, res) => {
    try {
       const updatedTourguide = await Tourguide.findByIdAndUpdate(
          req.params.id,
@@ -45,24 +51,54 @@ router.put('/:id', async (req, res) => {
 router.get('/find/:id', async (req, res) => {
    try {
       const newOrder = await Order.findById(req.params.id);
-      const newUser = await User.findById(req.params.id);
-      res.status(200).json({});
+      //  const newUser = await User.findById(req.params.id);
+    
+      res.status(200).json(newOrder);
+
    } catch (err) {
       res.status(500).json(err);
    }
 });
-
-//GET ALL TourguideS
 router.get('/', async (req, res) => {
    try {
-      const Orders = await Order.find();
+      
+      const Orders = await Order.aggregate([
+         { $match: { tourguideId: req.userId
+                     
+         } },
+         {
+            $group: {
+               _id: '$title',
+               Orders: { $push: '$name'},
+               count: { $sum: 1 }, // this means that the count will increment by 1
+            },
+         },
+      ]);
+    
+
       res.status(200).json({
+         message: 'success',
          Orders,
+
       });
    } catch (err) {
       res.status(500).json(err);
    }
 });
-//sadsdas
+//GET ALL TourguideS
+// router.get('/', async (req, res) => {
+//    try {
+//       const Orders = await Order.find();
+//       const Products = await Product.find();
+//       res.status(200).json({
+//          Orders,
+//          Products,
+//       });
+      
+//    } catch (err) {
+//       res.status(500).json(err);
+//    }
+// });
+
 
 module.exports = router;

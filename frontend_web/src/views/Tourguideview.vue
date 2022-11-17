@@ -1,4 +1,5 @@
 <script>
+
 import TourguideService from '../services/Tourguide.service';
 import toastsVue from '../components/toasts.vue';
 import { mapState } from 'pinia';
@@ -6,6 +7,7 @@ import { useAuthStore } from '@/stores/Auth.store';
 import toast from '../assets/js/toasts';
 import HeaderShop from '@/components/HeaderShop.vue'
 export default {
+
    data() {
       return {
          orders: [],
@@ -54,41 +56,11 @@ export default {
             const data = await TourguideService.getAll();
             console.log(data);
             this.orders = data.Orders;
-            this.products =data.Products
+         
             const user = JSON.parse(localStorage.getItem('user'));
             this.tourguideId = user._id;
             console.log(this.tourguideId);
-            console.log(this.products)
-            // for(var i in this.orders){
-            //    this.neworder.title= this.orders[i].title
-            //    console.log(this.neworder.title)
-            //    for ( var j in this.newdata){
-            //       if(this.neworder.title == this.newdata[j].title){
-            //          this.newdata.splice(j)
-                   
-                   
-            //       }else{
-            //          this.neworder.title= this.newdata[j].title
-            //       }
-            //    }
-           
-            //    console.log(this.neworder)
-            // }
          
-            for(var i in this.products){
-             
-             for(var j in this.orders){
-                if(this.orders[j].Matour === this.products[i]._id){
-                   this.products[i]._id= this.orders[j].Matour
-                   this.products[i]._id=  (Array.from(new Set(this.products[i]._id)))
-                 
-                   console.log(this.products[i].title)
-               
-                  
-                }
-             }
-          }
-           
 
          } catch (error) {
             this.toast();
@@ -101,8 +73,7 @@ export default {
 
    created() {
       this.getall();
-    
-     
+   
     
    },
   
@@ -119,10 +90,17 @@ export default {
       <div class="row-cols-1" >
          <h4 class="heading">Tên tour </h4>
             <div class="title"  v-for="order in orders"  :key="order._id"
-            v-show="order.tourguideId == tourguideId"
+            
             > 
          
-                   <span style="color :black;">{{order.title}}</span>
+            <router-link :to="{
+                name: 'tourguides',
+                params: { id: order._id }
+                    }">     
+
+
+                   <span style="color :black;">{{order._id}}</span>
+                </router-link>  
        </div>   
       </div>
 
