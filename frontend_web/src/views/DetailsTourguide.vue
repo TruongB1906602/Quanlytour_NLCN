@@ -88,7 +88,6 @@
 
    <div class="container">
 
-    
       <div class="row-cols-1">
          <h4 class="heading">Tên khách hàng</h4>
          <div class="title" v-for="order in detailorders1" :key="order._id" 
