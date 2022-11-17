@@ -1,4 +1,5 @@
 <script>
+
 import ProductService from "../services/Product.service";
 import toastjs from "../assets/js/toasts";
 import { swalert } from "@/mixins/swal.mixin";
@@ -57,7 +58,14 @@ import { swalert } from "@/mixins/swal.mixin";
         computed:{
             filterProductsByName() {
                   return this.products.filter(product => {
-                  return product.title.toLowerCase().includes(this.search.toLowerCase());
+                  return product.title.toUpperCase().match(this.search.toUpperCase());
+                  
+                 
+                 })
+            },
+            filterProductsByName() {
+                  return this.products.filter(product => {
+                    return product.title.toLowerCase().match(this.search.toLowerCase());
                  
                  })
             }
