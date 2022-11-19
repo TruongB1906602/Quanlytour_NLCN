@@ -91,10 +91,9 @@
                        startdate:"",
                        img:"",
                        methods:"",
+                       Matour:"",
 
-                     
-                       
-                    
+                  
                   },
                  
                    toasts:{
@@ -186,8 +185,6 @@
                     document.querySelector('.payment-box1').style.display='block'
                     document.querySelector('.payment-box2').style.display='none'
                     this.orderitem.methods = document.querySelector('.methods1').innerHTML
-
-                    console.log(this.orderitem.methods);
            
         },
              async payment1(){
@@ -216,6 +213,7 @@
                            this.orderitem.childprice = this.cartItem[i].childprice;
                            this.orderitem.startdate = this.cartItem[i].startdate;
                            this.orderitem.img = this.cartItem[i].img;
+                           this.orderitem.Matour = this.cartItem[i].productId;
                          
                         for(var j in this.products){
                           if(this.products[j]._id == this.cartItem[i].productId){

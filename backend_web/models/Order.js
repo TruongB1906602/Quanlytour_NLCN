@@ -14,8 +14,10 @@ const OrderSchema = new mongoose.Schema(
     img: { type: String},
     childquantity: { type: Number },
     phone: { type: String, required: true },
+  
     address: { type: String, required: true },
     title: { type: String, required: true },
+    Matour: { type: String },
     methods: { type: String, required:true },
     startdate: { type: String },
     email: { type: String, required: true },
@@ -24,6 +26,7 @@ const OrderSchema = new mongoose.Schema(
     nametourguide: { type: String},
     childprice: { type: Number, required: true },
     adultquantity: { type: Number, required: true },
+    
     status: { type: String, default: "Đang xử lý..." },
   },
   { timestamps: true }

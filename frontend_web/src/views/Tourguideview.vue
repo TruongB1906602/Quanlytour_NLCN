@@ -1,20 +1,18 @@
 <script>
-
 import TourguideService from '../services/Tourguide.service';
 import toastsVue from '../components/toasts.vue';
 import { mapState } from 'pinia';
 import { useAuthStore } from '@/stores/Auth.store';
 import toast from '../assets/js/toasts';
-import HeaderShop from '@/components/HeaderShop.vue'
+import HeaderShop from '@/components/HeaderShop.vue';
 export default {
-
    data() {
       return {
          orders: [],
-         products:[],
-         neworder:{
-            title:""
-               },
+         products: [],
+         neworder: {
+            title: '',
+         },
          activeUser: -1,
          activeIndexOrder: -1,
          toasts: {
@@ -24,7 +22,6 @@ export default {
             duration: 2000,
          },
          tourguideId: '',
-   
       };
    },
    computed: {
@@ -48,73 +45,53 @@ export default {
       toastsVue,
       HeaderShop,
    },
-   
    methods: {
       toast,
+
       async getall() {
          try {
             const data = await TourguideService.getAll();
-            console.log(data);
             this.orders = data.Orders;
-         
+            console.log(data);
             const user = JSON.parse(localStorage.getItem('user'));
             this.tourguideId = user._id;
             console.log(this.tourguideId);
-         
-
          } catch (error) {
             this.toast();
             setTimeout(() => {
                this.$router.push({ name: 'ShopMain' });
             }, 1000);
          }
-      },    
+      },
    },
 
    created() {
       this.getall();
-   
-    
    },
-  
 };
 </script>
 <template>
-   <HeaderShop/>
+   <HeaderShop />
    <div class="tourguide">
       <h3>Hướng dẫn viên</h3>
-     
    </div>
 
    <div class="container">
-      <div class="row-cols-1" >
-         <h4 class="heading">Tên tour </h4>
-            <div class="title"  v-for="order in orders"  :key="order._id"
-            
-            > 
-         
-            
-            <router-link :to="{
-                name: 'tourguides',
-                params: { id: order._id }
-                    }">     
-
-
-                   <span style="color :black;">{{order._id}}</span>
-                </router-link>  
-       </div>   
+      <div class="row-cols-1">
+         <h4 class="heading">Tên tour</h4>
+         <div class="title" v-for="order in orders" :key="order._id">
+            <router-link
+               :to="{
+                  name: 'tourguides',
+                  params: { id: order._id, data: order.data, phone: order.phone },
+               }"
+            >
+               <span style="color: black">{{ order._id }}</span>
+            </router-link>
+         </div>
       </div>
 
       
-      <!-- <div class="row-cols-1">
-         <h4 class="heading">Ngày bắt đầu</h4>
-         <div class="startdate" v-for="order in orders" :key="order._id" v-show="order.tourguideId == tourguideId">
-            <span>{{ order.startdate }}</span>
-         </div>
-      </div> -->
-     
-
-     
    </div>
 </template>
 <style scoped>
@@ -148,15 +125,14 @@ export default {
    background: white;
 }
 .startdate {
-    border: 1px solid #dee2e6;
-    height: 50px;
-    font-size: 14px;
-    width: 250px;
-    font-weight: 500;
-    width: 200px; 
-    padding: 10px;
-     background: white;
-    
+   border: 1px solid #dee2e6;
+   height: 50px;
+   font-size: 14px;
+   width: 250px;
+   font-weight: 500;
+   width: 200px;
+   padding: 10px;
+   background: white;
 }
 .heading {
    cursor: pointer;
@@ -172,23 +148,19 @@ export default {
 }
 
 .title {
-    border: 1px solid #dee2e6;
-    height: 50px;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 10px;
-    overflow: hidden;
-    background: white;
-    width: 450px;
-
-    
+   border: 1px solid #dee2e6;
+   height: 50px;
+   font-size: 14px;
+   font-weight: 500;
+   padding: 10px;
+   overflow: hidden;
+   background: white;
+   width: 450px;
 }
 
-title span{
+title span {
    color: rebeccapurple;
 }
-
-
 
 .row-cols-1 {
    /* width: 10%; */
