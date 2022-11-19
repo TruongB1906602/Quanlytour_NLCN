@@ -91,12 +91,6 @@ export default {
          </div>
       </div>
 
-      <!-- <div class="row-cols-1">
-         <h4 class="heading">Ngày bắt đầu</h4>
-         <div class="startdate" v-for="order in orders" :key="order._id" v-show="order.tourguideId == tourguideId">
-            <span>{{ order.startdate }}</span>
-         </div>
-      </div> -->
    </div>
 </template>
 <style scoped>
@@ -129,16 +123,7 @@ export default {
    border: 1px solid #dee2e6;
    background: white;
 }
-.startdate {
-   border: 1px solid #dee2e6;
-   height: 50px;
-   font-size: 14px;
-   width: 250px;
-   font-weight: 500;
-   width: 200px;
-   padding: 10px;
-   background: white;
-}
+
 .heading {
    cursor: pointer;
    position: relative;
