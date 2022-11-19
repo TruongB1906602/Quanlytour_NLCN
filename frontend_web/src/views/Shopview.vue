@@ -15,8 +15,6 @@
     export default {
          data:() =>{
             return {
-            //    title: "Phú Quốc",
-             
                 Products:[],
             }
         },
@@ -227,117 +225,7 @@
 	
 	 </div>
       
-<!--             
- <div class="center">
- <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="10000">
-        <div class="row">
-            <div class="col-lg-4" id="name"  v-on:click="title='Phú Quốc'">
-              
-                    <img src="@/assets/images/phuquoc.jpg" class="d-block w-100" alt="...">
-                    <h6>Phú Quốc </h6>
-            </div>
-             <div class="col-lg-4">
-                    <img src="http://zoomtravel.vn/upload/product/tour-tay-ninh--sunworld-ba-den-vuon-nho32232.png" class="d-block w-100" alt="...">
-                    <h6>Tây Ninh</h6>
-            </div>
-            <div class="col-lg-4" v-on:click="title='Đà Nẵng'">
-                    <img src="@/assets/images/banahills.jpg" class="d-block w-100" alt="...">
-                    <h6 >Đà Nẵng</h6>
-            </div>
-       
-            <div class="col-lg-4" v-on:click="title='Đà Nẵng'">
-                   
-                <img src="@/assets/images/diengio.jpg" class="d-block w-100" alt="...">
-                <h6 >Bạc Liêu</h6>
 
-            </div>
-            <div class="col-lg-4">
-                    <img src="@/assets/images/sapa.jpg" class="d-block w-100" alt="...">
-                    <h6>SaPa</h6>
-            </div>
-             
-        </div>
-      
-    
-    </div>
-    <div class="carousel-item" data-bs-interval="20000">
-      <div class="row">
-            <div class="col-lg-4" >
-                    <img src="@/assets/images/culaocham.jpg" class="d-block w-100" alt="...">
-                    <h6>Cù lao</h6>
-            </div>
-             <div class="col-lg-4">
-                    <img src="https://mytourcdn.com/upload_images/Image/Location/20_2_2015/du-lich-ha-tien-2-ngay-1-dem-1.jpg" class="d-block w-100" alt="...">
-                    <h6>Hà Tiên</h6>
-            </div>
-           <div class="col-lg-4">
-                    <img src="@/assets/images/hoian.jpg" class="d-block w-100" alt="...">
-                    <h6>Hội An</h6>
-            </div>
-        
-            <div class="col-lg-4">
-                    <img src="@/assets/images/phan_thiet.jpg" class="d-block w-100" alt="...">
-                    <h6>Phan Thiết</h6>
-            </div>
-        
-         
-            <div class="col-lg-4">
-                    <img src="@/assets/images/hanoi.jpg" class="d-block w-100" alt="...">
-                    <h6>Hội An</h6>
-            </div>
-           
-        </div>
-      
-      
-    </div>
-    <div class="carousel-item">
-      <div class="row">
-            <div class="col-lg-4">
-                    <img src="@/assets/images/hue.jpg" class="d-block w-100" alt="...">
-                    <h6>Huế</h6>
-            </div>
-             <div class="col-lg-4">
-                    <img src="@/assets/images/hue.jpg" class="d-block w-100" alt="...">
-                    <h6>Huế</h6>
-            </div>
-        
-         
-            <div class="col-lg-4">
-                    <img src="@/assets/images/cantho.jpg" class="d-block w-100" alt="...">
-                    <h6>Cần Thơ</h6>
-            </div>
-            <div class="col-lg-4">
-                    <img src="@/assets/images/landmark.jpg" class="d-block w-100" alt="...">
-                    <h6>TP. Hồ Chí Minh</h6>
-            </div>
-        
-         
-            <div class="col-lg-4">
-                    <img src="@/assets/images/halong.jpg" class="d-block w-100" alt="...">
-                    <h6>Hạ Long</h6>
-            </div>
-            
-      </div>
-      
-      
-    </div>
-  </div>
-  <div class="navi-left">
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <img src="@/assets/images/left-arrow.png" alt="">
-  </button>
-   </div>
-   <div class="navi-right">
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <img src="@/assets/images/right-arrow.png" alt="">
-  </button>
- </div>
-</div>
-</div> -->
 
 </div>
   <div class="place">

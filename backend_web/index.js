@@ -44,7 +44,6 @@ app.use('/api/admins', verifyToken, CheckLogin, CheckRoleAdmin, adminRoute);
 //Note
 app.use('/api/tourguide', verifyToken, CheckLogin, checkRoleTourGuide, tourGuideRoute);
 app.use('/api/customer', verifyToken, CheckLogin, checkRoleCustomer);
-//
 app.use('/api/pays', verifyToken, payRoute);
 app.use('/api/carts', cartRoute);
 app.use('/api/orders', orderRoute);

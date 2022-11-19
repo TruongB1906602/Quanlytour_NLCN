@@ -1,4 +1,5 @@
 <script>
+
     import OrderService from "../services/Order.service";
     import toastjs from "../assets/js/toasts";
         export default{
@@ -33,7 +34,7 @@
                     }catch(error){
                         console.log(error);
                         this.toasts.title = "Warning",
-                        this.toasts.mqsg= "Bạn chưa đăng nhập hoặc bạn không phải ADMIN",
+                        this.toasts.msg= "Bạn chưa đăng nhập hoặc bạn không phải ADMIN",
                         this.toasts.type = "warn",
                         this.toasts.duration=2000
                         this.toastjs();

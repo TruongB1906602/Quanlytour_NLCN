@@ -16,11 +16,11 @@
 </template>
 
 <script>
+
 import toastjs from "../assets/js/toasts";
 import toastsVue from "../components/toasts.vue";
 import ProductService from "../services/Product.service";
 import HeaderShop from "../components/HeaderShop.vue";
-
 import Productform from "../components/Productform.vue";
 export default {
   data(){

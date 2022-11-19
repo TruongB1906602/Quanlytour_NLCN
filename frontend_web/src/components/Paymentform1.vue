@@ -33,27 +33,23 @@
                   currentUser: "user",
               }),
           },
-       data() {
+        data() {
         
           const payform = yup.object().shape({ 
               name: yup
               .string()
               .required("Tên phải có giá trị."),   
-              
               others: yup
               .string(),
-            
-        
               userId: yup
               .string(""),
-              
               address: yup
               .string()
               .required("Địa chỉ phải có giá trị."),
-            
               email: yup
               .string()
               .required("Email phải có giá trị."),
+          
               phone: yup
             .string()
             .required("Điện thoại không có giá trị!")
@@ -189,7 +185,7 @@
         async payment(){
                     document.querySelector('.payment-box1').style.display='block'
                     document.querySelector('.payment-box2').style.display='none'
-                    this.orderitem.methods= document.querySelector('.methods1').innerHTML
+                    this.orderitem.methods = document.querySelector('.methods1').innerHTML
 
                     console.log(this.orderitem.methods);
            
@@ -204,6 +200,7 @@
                toastsjs,
                async getidcart() {
                 var quantity1=0
+                
                   try{
                     this.cartItem=  await CartService.get(this.currentUser._id)
                         this.orderitem.userId = this.currentUser._id;
@@ -236,7 +233,7 @@
                       this.toasts.title="Message",
                       this.toasts.msg="Bạn chưa đăng nhập!",
                       this.toasts.type="warn",
-                      this.toasts.duration=3000,
+                      this.toasts.duration=2000,
                       this.toastsjs(); 
                       console.log(error);
                   }
@@ -320,9 +317,6 @@
                    <CartItem v-bind:title="title"  :refeshlistcart="refeshlistcart" :carts="carts" @deleted:cartIndex="delcart"></CartItem>
                 
                   <div class="methods">
-
-
-
                     <ul    v-show="title  == '1'" >
                     <li @click="payment">
                         <input type="radio" id="html" name="fav_language" value="HTML" >
@@ -331,6 +325,7 @@
                                     <p  class="methods1">
                                         Thực hiện thanh toán chuyển khoản ngay vào tài khoản ngân hàng của chúng tôi. Đơn hàng sẽ chuyển giao sau khi tiền đã chuyển tiền thành công.
                                     </p>
+                                  
                         </div>
                     </li>
                     <li @click="payment1">
@@ -340,6 +335,7 @@
                                     <p class=" methods2">
                                     Trả tiền mặt khi giao hàng, Du lịch Travel Việt sẽ gửi đến bạn phiếu xác nhận đặt tour, chúng tôi sẽ thu phí nhỏ thôi!.
                                     </p>
+                                  
                         </div>
                     </li>
                     

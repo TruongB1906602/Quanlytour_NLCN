@@ -1,4 +1,5 @@
 <script>
+
     import ListUser from "../components/ListUser.vue";
     import AdminService from "../services/Admin.service";
     import toastsVue from "../components/toasts.vue";
@@ -13,7 +14,7 @@
     import Paycard from "../components/Paycard.vue";
     import Addcreatepay from "@/views/Addcreatepay.vue";
     import AddProduct from "@/views/AddProduct.vue";
- 
+
     import EditPay from "../views/EditPay.vue";
     import EditProduct from "../views/EditProduct.vue";
     import toast from "../assets/js/toasts";
@@ -109,23 +110,23 @@
                 }
             },
             components:{
-    ListUser,
-    ListProduct,
-    toastsVue,
-    Productcard,
-    Usercard,
-    ListHotel,
-    Hotelcard,
-    Listtourguide,
-    PayList,
-    Paycard,
-    ListOrder,
-    Addcreatepay,
-    AddProduct,
-    EditProduct,
-    EditPay,
-    Addnews,
-    ListNews,
+                ListUser,
+                ListProduct,
+                toastsVue,
+                Productcard,
+                Usercard,
+                ListHotel,
+                Hotelcard,
+                Listtourguide,
+                PayList,
+                Paycard,
+                ListOrder,
+                Addcreatepay,
+                AddProduct,
+                EditProduct,
+                EditPay,
+                Addnews,
+                ListNews,
 },
             methods:{
                    showBlock(number) {
@@ -200,11 +201,11 @@
                                 <li @click="showBlock(2)"> <a href="#addcustomer" >Thêm khách hàng</a></li>
                             </ul>
                         </li>
-                        <li @click="showBlock(3)" >
+                        <!-- <li @click="showBlock(3)" >
                                <a href="#hotels"> <label for="" class="four">
                                     <i class="fa-solid fa-hotel"></i>
                                     Quản lí khách sạn </label></a>
-                        </li>
+                        </li> -->
 
                         <li >
                             <label for="btn-4" class="five">

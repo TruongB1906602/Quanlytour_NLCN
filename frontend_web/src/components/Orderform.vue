@@ -4,6 +4,7 @@
     import toastsVue from '../components/toasts.vue'
     import toastsjs from '../assets/js/toasts.js'
     import { mapState } from 'pinia'
+    import UserService from "../services/User.service";
       import { useAuthStore } from "@/stores/Auth.store";
     export default{
         props:{
@@ -60,7 +61,7 @@
              
               });
               return {
-              
+              user:[],
               orderdetails:this.order,
               orderform,
         
@@ -91,7 +92,20 @@
                           this.$refs.contactForm.resetForm();
                     }   
              },
-          
+          async getuser(){
+            try {
+                    this.order= await OrderService.getAll();
+                    console.log(this.order.userId);
+                } catch (error) {
+                    console.log(error);
+                    this.$router.push({
+                        name: "notfound",
+                        params: { pathMatch: this.$route.path.split("/").slice(1) },
+                        query: this.$route.query,
+                        hash: this.$route.hash,
+                    });
+                }
+          }
        
         },
         computed:{

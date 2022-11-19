@@ -8,7 +8,6 @@
   import NewsService from "../services/News.service";
   import Cartshopdetails from "@/views/Cartshopdetails.vue";
   import HeaderShop from '@/components/HeaderShop.vue';
- 
   import Paymentform1 from "../components/Paymentform1.vue";
 
   export default {
@@ -23,6 +22,7 @@
                 type:"success",
                 duration:2000
                 },
+                title:'1',
                 
       }
     },

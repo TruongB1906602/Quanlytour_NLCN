@@ -1,124 +1,97 @@
 <script>
 
-    import HeaderShop from '@/components/HeaderShop.vue'
-    import OrderService from '../services/Order.service'
-    import TourguideService from '../services/Tourguide.service'
-    import toastsVue from '../components/toasts.vue'
-    import toastsjs from '../assets/js/toasts.js'
-    import { mapState } from 'pinia'
-    import { useAuthStore } from "@/stores/Auth.store"; 
-    import { string } from 'yup/lib/locale'
-    
-    export default {
+import HeaderShop from '@/components/HeaderShop.vue';
+import OrderService from '../services/Order.service';
+import TourguideService from '../services/Tourguide.service';
+import toastsVue from '../components/toasts.vue';
+import toastsjs from '../assets/js/toasts.js';
+import { mapState } from 'pinia';
+import { useAuthStore } from '@/stores/Auth.store';
+import { string } from 'yup/lib/locale';
 
-        data(){
-            return{
-                 detailorders:[],
-                 detailorders1:[],
-              
-                 toasts:{
-                    title:"Success",
-                    msg:"Thêm vào giỏ hàng thành công!",
-                    type:"success",
-                    duration:2000
-                 },
-            
-                sub_quantity:1, 
-               
-            }
-        },
-        computed:{
-            ...mapState(useAuthStore,{
-                currentUser: "user",
-            }),
-        },
-        components:{
-            HeaderShop,
-            toastsVue,
-           
-        },
-        methods:{
-            toastsjs,
+export default {
+   data() {
+      return {
+         detailorders: [],
+         detailorders1: [],
 
-            async getorder(){
-                try{
-                 
-                    this.detailorders = await  TourguideService.get( this.$route.params.id);
-                console.log(this.detailorders);
-                   
-                }catch(error){
-                    console.log(error);
-                }
-            },
-        
-            async getorder1(){
-                try{
-                 
-                        this.detailorders1 = await OrderService.getAll();
-                        const user = JSON.parse(localStorage.getItem('user'));
-                        this.tourguideId = user._id;
-                        console.log(this.tourguideId);
-                       
-                }catch(error){
-                    console.log(error);
-                   
-                }
-            },
+         toasts: {
+            title: 'Success',
+            msg: 'Thêm vào giỏ hàng thành công!',
+            type: 'success',
+            duration: 2000,
+         },
 
-          
-        },
-          
-        created() {
-            this.getorder();
-            this.getorder1();
+         sub_quantity: 1,
+      };
+   },
+   computed: {
+      ...mapState(useAuthStore, {
+         currentUser: 'user',
+      }),
+   },
+   components: {
+      HeaderShop,
+      toastsVue,
+   },
+   methods: {
+      toastsjs,
 
-        },
+      async getorder() {
+         try {
+            this.detailorders = await TourguideService.get(this.$route.params.data.id);
+         } catch (error) {
+            console.log(error);
+         }
+      },
 
-    }
+      async getorder1() {
+         try {
+            this.detailorders1 = await OrderService.getAll();
+            const user = JSON.parse(localStorage.getItem('user'));
+            console.log(this.$route.params);
+
+            this.tourguideId = user._id;
+            console.log(this.detailorders1._id);
+         } catch (error) {
+            console.log(error);
+         }
+      },
+   },
+
+   created() {
+      this.getorder();
+      this.getorder1();
+   },
+};
 </script>
 <template>
-<div>
-    <HeaderShop></HeaderShop>
-    <toastsVue></toastsVue>
-  
-    <div class="tourguide">
-      <h3>Giao diện quản lý khách hàng của hướng dẫn viên</h3>
-      <a href=""> <input type="text" placeholder="Tìm kiếm khách hàng" /></a>
-   </div>
+   <div>
+      <HeaderShop></HeaderShop>
+      <toastsVue></toastsVue>
 
-   <div class="container">
-
-      <div class="row-cols-1">
-         <h4 class="heading">Tên khách hàng</h4>
-         <div class="title" v-for="order in detailorders1" :key="order._id" 
-
-         v-show="order.tourguideId == tourguideId && order.title== tourguide._id"
-       
-         > 
-
-         <span>{{ order.name}}</span>
-        
-
-      </div> 
+      <div class="tourguide">
+         <h3>Giao diện quản lý khách hàng của hướng dẫn viên</h3>
+         <a href=""> <input type="text" placeholder="Tìm kiếm khách hàng" /></a>
       </div>
-   
-      <div class="row-cols-1">
-         <h4 class="heading">Địa chỉ</h4>
-         <div class="startdate" v-for="order in detailorders1" :key="order._id"   v-show="order.tourguideId == tourguideId">
-            <span>{{ order.address }}</span>
+
+      <div class="container">
+         <div class="row-cols-1">
+            <h4 class="heading">Tên khách hàng</h4>
+
+            <div class="title" v-for="fullName in this.$route.params.data" :key="order">
+               <span>{{ fullName }}</span>
+            </div>
+         </div>
+
+         <div class="row-cols-1">
+            <h4 class="heading">Địa chỉ</h4>
+            <div class="startdate" v-for="phone in this.$route.params.phone" :key="phone">
+               <span>{{ phone }}</span>
+            </div>
          </div>
       </div>
-
-      <div class="row-cols-1">
-         <h4 class="heading">SĐT</h4>
-         <div class="startdate" v-for="order in detailorders1" :key="order._id"   v-show="order.title == detailorders.title && order.tourguideId == tourguideId">
-            <span>{{order.phone}}</span>
-         </div>
-      </div>
-
-     
    </div>
-  </div> 
 </template>
 <style scoped>
 .tourguide {
@@ -150,15 +123,14 @@
    background: white;
 }
 .startdate {
-    border: 1px solid #dee2e6;
-    height: 50px;
-    font-size: 14px;
-    width: 250px;
-    font-weight: 500;
-    width: 200px; 
-    padding: 10px;
-     background: white;
-    
+   border: 1px solid #dee2e6;
+   height: 50px;
+   font-size: 14px;
+   width: 250px;
+   font-weight: 500;
+   width: 200px;
+   padding: 10px;
+   background: white;
 }
 .heading {
    cursor: pointer;
@@ -174,18 +146,15 @@
 }
 
 .title {
-    border: 1px solid #dee2e6;
-    height: 50px;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 10px;
-    overflow: hidden;
-    background: white;
-    width: 450px;
-    
+   border: 1px solid #dee2e6;
+   height: 50px;
+   font-size: 14px;
+   font-weight: 500;
+   padding: 10px;
+   overflow: hidden;
+   background: white;
+   width: 450px;
 }
-
-
 
 .row-cols-1 {
    /* width: 10%; */

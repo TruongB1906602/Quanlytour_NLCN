@@ -29,6 +29,7 @@
     </div>
     </template>
     
+    
     <script>
     import toastjs from "../assets/js/toasts";
     import toastsVue from "../components/toasts.vue";

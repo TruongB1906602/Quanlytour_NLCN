@@ -1,5 +1,6 @@
 
 <script>
+
     import toastjs from "../assets/js/toasts";
     import toastsVue from "../components/toasts.vue";
     import Paymentform from "../components/Paymentform.vue";

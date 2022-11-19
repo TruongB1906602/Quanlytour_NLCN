@@ -1,6 +1,7 @@
 <script>
-  import * as yup from "yup";
-  import { Form, Field, ErrorMessage } from "vee-validate";
+
+import * as yup from "yup";
+import { Form, Field, ErrorMessage } from "vee-validate";
 import toastsVue from '../components/toasts.vue'
 import toastsjs from '../assets/js/toasts.js'
   
@@ -90,7 +91,9 @@ import toastsjs from '../assets/js/toasts.js'
 <div class="wrapper">
 
      <Form :validation-schema="payform"  @submit="submitpay" >
-      <h4>Thông tin khách hàng</h4>
+      <div class="heading">
+          <h4>Thêm khách hàng  </h4>
+       </div>
      <div class="left">
      
         
@@ -168,11 +171,9 @@ label{
    
   border: 1px solid grey;
 }
-h4{
-     font-size: 18px;
-      font-weight: 600;
-      line-height: 21px;
-     
+   h4{
+    
+   
       font-weight: 600;
       margin-bottom: 15px;
       color:#333;
@@ -201,7 +202,17 @@ h4{
     background: #338dbc;
     color: white;
 }
-
+.heading{
+    padding-left: 5px;
+    width: 96%;
+    height: 40px;
+   
+    margin-bottom: 15px;
+    border-left: 7px solid #FFD43B;
+    background: #eee;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
 .form-control{
   font: inherit;
     color: currentColor;

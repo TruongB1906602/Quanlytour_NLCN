@@ -1,6 +1,7 @@
 <script>
     import OrderService from "../services/Order.service";
     import toastjs from "../assets/js/toasts";
+    
     import { swalert } from "@/mixins/swal.mixin";
         export default{
             data(){
@@ -34,9 +35,14 @@
 					if (result.isConfirmed) {
 						try {
                             await OrderService.delete(id);
-                            setTimeout(()=>{
-                               location.reload();
-                             },2000);
+                            // setTimeout(()=>{
+                            //    location.reload();
+                            //  },2000);
+                        this.toasts.title = "Warning",
+                        this.toasts.mqsg= "Bạn chưa đăng nhập hoặc bạn không phải ADMIN",
+                        this.toasts.type = "warn",
+                        this.toasts.duration=1000
+                        this.toastjs();
 						} catch (error) {
 							console.log(error);
 						}

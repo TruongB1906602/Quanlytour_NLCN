@@ -45,6 +45,7 @@ export default {
       toastsVue,
       HeaderShop,
    },
+   
    methods: {
       toast,
       async getall() {
