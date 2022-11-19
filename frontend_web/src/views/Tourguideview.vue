@@ -47,7 +47,6 @@ export default {
    },
    methods: {
       toast,
-
       async getall() {
          try {
             const data = await TourguideService.getAll();
