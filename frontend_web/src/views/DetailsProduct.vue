@@ -79,9 +79,11 @@
             async getidcart(){
                 this.cartitem.quantity=this.sub_quantity;
                 var exitcart = false;
-                  this.carts = await CartService.get(this.currentUser._id);
-                  console.log(this.currentUser._id );
+                
+                
                 try{
+                    this.carts = await CartService.get(this.currentUser._id);
+                  console.log(this.currentUser._id );
                     if(this.carts.length== '0' && this.currentUser){
                             if(this.detailproduct.empty > '0'){
                                 console.log(this.carts.userId );
@@ -119,24 +121,26 @@
                                     this.toastsjs(); 
                             }
                         
-                    }
+                    } 
+                   
                 
-                     else{
-                        this.toasts.title = "Warning",
-                        this.toasts.msg="Bạn đang có tour đang được chờ phê duyệt!",
-                        this.toasts.type = "warn",
-                        this.toasts.duration=2000
-                         this.toastsjs();   
-                }
+                        else{
+                            this.toasts.title = "Warning",
+                            this.toasts.msg="Bạn đang có tour đang được chờ phê duyệt!",
+                            this.toasts.type = "warn",
+                            this.toasts.duration=2000
+                            this.toastsjs();   
+                        }
                 
                    
                 }catch(error){
-                    this.toasts.title="Message",
-                    this.toasts.msg="Bạn chưa đăng nhập!",
-                     this.toasts.title = "Success",
-                    this.toasts.duration=3000,
-                    this.toastsjs(); 
-                    console.log(error);
+                        console.log(error);
+                        this.toasts.title = "Warning",
+                            this.toasts.msg="Bạn chưa đăng nhập!",
+                            this.toasts.type = "warn",
+                            this.toasts.duration=1000
+                            this.toastsjs();   
+                        
                 }
                 
             },

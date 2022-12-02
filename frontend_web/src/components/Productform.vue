@@ -67,7 +67,9 @@
   </script>
   <template>
      <div class="container">
-        <h5>Thông tin tour</h5>
+      <div class="heading">
+          <h4>Thêm tour mới  </h4>
+       </div>
         <Form :validation-schema="productform" @submit="submitproduct">
            <div class="row">
               <div class="col">
@@ -116,38 +118,7 @@
               </div>
              
            </div>
-           
-           <!-- <div class="row">
-              <div class="col">
-                 <div class="form-group">
-                    <label for="priceproduct">Số vé người lớn</label>
-                    <Field
-                       type="number"
-                       class="form-control"
-                       id="priceproduct"
-                       name="adultquantity"
-                       placeholder="Nhập vào giá tour"
-                       v-model="productLocal.adultquantity"
-                    />
-                    <ErrorMessage name="adultquantity" class="text-danger" />
-                 </div>
-              </div>
-              <div class="col">
-                 <div class="form-group">
-                    <label for="categoryproduct">Số vé trẻ em</label>
-                    <Field
-                       type="text"
-                       class="form-control"
-                       id="categoryproduct"
-                       name="childquantity"
-                       placeholder="Nhập vào loại tour"
-                       v-model="productLocal.childquantity"
-                    />
-                    <ErrorMessage name="childquantity" class="text-danger" />
-                  
-                 </div>
-              </div>
-           </div> -->
+         
            <div class="row">
               <div class="col">
                  <div class="form-group">
@@ -341,4 +312,15 @@
   .row{
    margin-bottom: 15px;
   }
+  .heading{
+    padding-left: 5px;
+   
+    height: 40px;
+   
+    margin-bottom: 15px;
+    border-left: 7px solid #FFD43B;
+    background: #eee;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
   </style>

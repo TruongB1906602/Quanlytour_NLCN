@@ -29,8 +29,6 @@
        },
        methods:{
 
-
-
         async getorder() {
               try {
                   this.orders= await OrderService.getAll();
@@ -103,12 +101,6 @@
          refeshlistcart(){
            this.getcarts();
          },
-        
-       
-  
-          
-    
-
        },
        computed: {
             total(){
@@ -147,8 +139,8 @@
       
         <h1 >    
          <span ><img style="width:40px;" src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt=""></span> 
-          Đặt hàng thành công! 
-          Đơn hàng của bạn đang chờ được phê duyệt! </h1>
+            Đặt hàng thành công! 
+            Đơn hàng của bạn đang chờ được phê duyệt! </h1>
       
        </div>       
   <section class="h-100 h-custom" style="margin:0 100px;">

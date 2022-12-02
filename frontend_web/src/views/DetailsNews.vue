@@ -35,12 +35,10 @@
         methods:{
             toastsjs,
 
-            async getproduct(){
+            async getnews(){
                 try{
                  
                     this.detailnews = await NewsService.get(this.$route.params.id);
-                
-                  
                 }catch(error){
                     console.log(error);
                    
@@ -49,7 +47,7 @@
         },
           
         created() {
-            this.getproduct();
+            this.getnews();
         },
 
     }

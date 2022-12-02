@@ -83,7 +83,7 @@ export default {
             <router-link
                :to="{
                   name: 'tourguides',
-                  params: { id: order.codeTour, data: order.data, phone: order.phone },
+                  params: { id: order._id, data: order.data, phone: order.phone },
                }"
             >
                <span style="color: black">{{ order._id }}</span>
@@ -91,12 +91,7 @@ export default {
          </div>
       </div>
 
-      <!-- <div class="row-cols-1">
-         <h4 class="heading">Ngày bắt đầu</h4>
-         <div class="startdate" v-for="order in orders" :key="order._id" v-show="order.tourguideId == tourguideId">
-            <span>{{ order.startdate }}</span>
-         </div>
-      </div> -->
+      
    </div>
 </template>
 <style scoped>

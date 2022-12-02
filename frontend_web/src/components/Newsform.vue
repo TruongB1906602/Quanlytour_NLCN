@@ -1,6 +1,6 @@
 <script>
-  import * as yup from 'yup';
-  
+
+  import * as yup from 'yup';  
   import { Form, Field, ErrorMessage } from 'vee-validate';
   import Input from '../views/Input.vue';
   export default {
@@ -14,7 +14,6 @@
          
          title: yup.string().required('Giá trẻ em có giá trị.'), 
          destination: yup.string().required('Điểm đến phải có giá trị.'), 
-      
          desc: yup.string(),
          img: yup.string(),
       
@@ -58,7 +57,7 @@
   </script>
   <template>
      <div class="container">
-        <h5>Thông tin tour</h5>
+        <h5 class="heading">Thêm tin tức</h5>
         <Form :validation-schema="productform" @submit="submitproduct">
            <div class="row">
               <div class="col">
@@ -158,6 +157,17 @@
      </div>
   </template>
   <style scoped>
+  .heading{
+   padding-left: 5px;
+    width: 96%;
+    height: 40px;
+    
+    margin-bottom: 15px;
+    border-left: 7px solid #FFD43B;
+    background: #eee;
+    padding-bottom: 10px;
+    padding-top: 5px;
+  }
   .wrapper {
      width: 100%;
      margin: 50px 200px;

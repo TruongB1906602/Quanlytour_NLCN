@@ -66,12 +66,7 @@ export default{
           this.toasts.msg = "Đã cập nhật",
           this.toasts.type = "success",
           this.toasts.duration=1000
-        
-
               this.$router.push("/addpay")
-
-        
-  
           this.toastsjs();
          }else{
               this.toasts.title = "Failed",

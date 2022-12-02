@@ -1,17 +1,8 @@
 //Đang phát triển
 const Order = require("../models/Order");
-const {
-  verifyToken,
-  verifyTokenAndAuthorization,
-  CheckRoleAdmin,
-  verifyTokenAndTourguide,
-} = require("./verifyToken");
-
 const router = require("express").Router();
-
 //CREATE
-
-router.post("/", verifyToken, async (req, res) => {
+router.post("/", async (req, res) => {
   const newOrder = new Order(req.body);
 
   try {
@@ -23,7 +14,7 @@ router.post("/", verifyToken, async (req, res) => {
 });
 
 //UPDATE
-router.put("/:id", CheckRoleAdmin, async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const updatedOrder = await Order.findByIdAndUpdate(
       req.params.id,

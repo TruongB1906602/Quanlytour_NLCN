@@ -1,7 +1,6 @@
 <script>
    
-    import OrderService from '../services/Order.service'
-  
+    import OrderService from '../services/Order.service'  
     import toastsVue from '../components/toasts.vue'
     import toastsjs from '../assets/js/toasts.js'
     import { mapState } from 'pinia'

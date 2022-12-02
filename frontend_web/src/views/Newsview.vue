@@ -77,15 +77,13 @@
                         params: { id: new1._id },
                             }">
                 <strong style="display: inline-block;">
-                    <img :src=new1.img[0] style="width: 200px;margin: 0 10px;height: 160px; border-radius: 65%;" alt="">
+                    <img :src=new1.img[0] style="width: 200px;margin: 0px 10px;border-radius: 15% ;height: 140px; " alt="">
                 </strong>     
-                <span  id="noidung" style="margin-top: 10px; width: 25rem;height:70px;display: inline-block;font: 400 13px/18px 'Roboto', sans-serif;">{{new1.title}}</span>
+                <span style="margin-top: 20px; width: 25rem;height:70px;display: inline-block;color:#3d1552 ;font: 400 13px/18px 'Roboto', sans-serif;">{{new1.title}}</span>
             
                     
-                </router-link>
+            </router-link>
 
-
-              
     </div>
 
     
@@ -106,17 +104,18 @@
     margin-top: 1rem;
 }
 .details{
-   margin-top: 3rem;
-    display: flex;
+   margin-top: 4rem;
+   display:flex;
     width: 50rem;
-    height: 200px;
+    height: 180px;
     overflow: hidden;
     margin-left: 3rem;
+
+
    
 }
 span:hover{
-
-    color:#dcdcdc96;
+    color: #8ed13d;
 }
 
 
